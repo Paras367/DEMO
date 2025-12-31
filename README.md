@@ -72,7 +72,12 @@ For queries, suggestions, or collaboration, contact us at:
 - Not intended for production-level deployment
 
 ---
+## 🔐 Privacy & Policy
 
+Please read our Privacy Policy here:  
+👉 [Privacy Policy](PRIVACY_POLICY.md)
+
+---
 ## ⭐ Support
 
 If this repository helps you in learning, please consider giving it a **⭐ Star** on GitHub.

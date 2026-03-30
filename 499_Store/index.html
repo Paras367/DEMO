@@ -1,0 +1,2590 @@
+<!DOCTYPE html>
+<html lang=3D"en">
+<head>
+  <meta charset=3D"UTF-8" />
+  <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D=
+1.0"/>
+  <title>THE 499 STORE</title>
+
+  <!-- Font Awesome 6 CDN -->
+  <link rel=3D"stylesheet" href=3D"
+https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/=
+>
+
+  <!-- Google Fonts -->
+  <link href=3D"
+https://fonts.googleapis.com/css2?family=3DBebas+Neue&family=3DRajdhani:wgh=
+t@400;600;700&family=3DPoppins:wght@300;400;600&display=3Dswap"
+rel=3D"stylesheet"/>
+
+  <style>
+    /* =3D=3D=3D=3D=3D ROOT VARIABLES =3D=3D=3D=3D=3D */
+    :root {
+      --yellow: #FFD600;
+      --yellow-light: #FFE44D;
+      --black: #0A0A0A;
+      --dark: #111111;
+      --dark2: #1A1A1A;
+      --white: #FFFFFF;
+      --gray: #CCCCCC;
+      --gray-dark: #555555;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* =3D=3D=3D=3D=3D SCROLLBAR =3D=3D=3D=3D=3D */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--yellow); border-radius:
+3px; }
+
+    /* =3D=3D=3D=3D=3D NAVBAR =3D=3D=3D=3D=3D */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,214,0,0.15);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      color: var(--yellow);
+      letter-spacing: 3px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0; height: 2px;
+      background: var(--yellow);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--yellow); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-links a i { margin-right: 6px; font-size: 13px; }
+
+    .nav-cta {
+      background: var(--yellow);
+      color: var(--black);
+      padding: 10px 24px;
+      border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--yellow-light); transform:
+translateY(-1px); }
+
+    /* =3D=3D=3D=3D=3D HERO SECTION =3D=3D=3D=3D=3D */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+      text-align: center;
+      padding: 100px 20px 60px;
+    }
+
+    /* Diagonal stripe background */
+    #home::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: -100px;
+      width: 700px; height: 700px;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,214,0,0.03) 0px,
+        rgba(255,214,0,0.03) 2px,
+        transparent 2px,
+        transparent 20px
+      );
+      border-radius: 50%;
+      animation: rotateBg 30s linear infinite;
+    }
+
+    #home::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(255,214,0,0.03) 0px,
+        rgba(255,214,0,0.03) 2px,
+        transparent 2px,
+        transparent 20px
+      );
+      border-radius: 50%;
+      animation: rotateBg 40s linear infinite reverse;
+    }
+
+    @keyframes rotateBg {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-tag {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,214,0,0.4);
+      padding: 6px 18px;
+      display: inline-block;
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(90px, 18vw, 200px);
+      line-height: 0.9;
+      color: var(--yellow);
+      letter-spacing: 4px;
+      animation: fadeUp 0.9s ease 0.2s both;
+      text-shadow:
+        0 0 80px rgba(255,214,0,0.3),
+        0 0 160px rgba(255,214,0,0.1);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-subtitle {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(16px, 3vw, 26px);
+      letter-spacing: 8px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-top: 10px;
+      animation: fadeUp 0.9s ease 0.4s both;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-desc {
+      max-width: 500px;
+      margin: 28px auto 0;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--gray);
+      animation: fadeUp 0.9s ease 0.6s both;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 0.9s ease 0.8s both;
+    }
+
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 12px 22px;
+      border-radius: 2px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 1px;
+      color: var(--white);
+    }
+
+    .hero-badge i { color: var(--yellow); font-size: 18px; }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray-dark);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: bounce 2s ease infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =3D=3D=3D=3D=3D SECTION COMMONS =3D=3D=3D=3D=3D */
+    section {
+      padding: 100px 60px;
+    }
+
+    .section-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 30px; height: 2px;
+      background: var(--yellow);
+      display: inline-block;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 5vw, 64px);
+      letter-spacing: 2px;
+      line-height: 1.05;
+      color: var(--white);
+    }
+
+    .section-title span { color: var(--yellow); }
+
+    /* =3D=3D=3D=3D=3D ABOUT US =3D=3D=3D=3D=3D */
+    #about {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #about::before {
+      content: '499';
+      position: absolute;
+      right: -60px; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 400px;
+      color: rgba(255,214,0,0.02);
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-left .section-label,
+    .about-left .section-title { margin-bottom: 8px; }
+
+    .about-left .section-title { margin-bottom: 24px; }
+
+    .about-text {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
+    .owner-card {
+      margin-top: 36px;
+      background: rgba(255,214,0,0.05);
+      border: 1px solid rgba(255,214,0,0.2);
+      padding: 24px 28px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .owner-icon {
+      width: 60px; height: 60px;
+      background: var(--yellow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 24px;
+      color: var(--black);
+    }
+
+    .owner-info h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: var(--white);
+    }
+
+    .owner-info p {
+      font-size: 12px;
+      color: var(--yellow);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 32px;
+      margin-top: 36px;
+    }
+
+    .stat-item {
+      text-align: center;
+      flex: 1;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 20px 10px;
+      border-radius: 4px;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      color: var(--yellow);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      font-family: 'Rajdhani', sans-serif;
+      margin-top: 4px;
+    }
+
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .branches-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .branch-card {
+      background: var(--dark2);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-left: 3px solid var(--yellow);
+      padding: 20px 24px;
+      border-radius: 2px;
+      transition: background 0.3s;
+    }
+
+    .branch-card:hover { background: rgba(255,214,0,0.05); }
+
+    .branch-card h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .branch-card p {
+      font-size: 13px;
+      color: var(--gray-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .branch-card p i { color: var(--yellow); font-size: 12px; }
+
+    .photo-placeholder {
+      background: var(--dark2);
+      border: 2px dashed rgba(255,214,0,0.2);
+      border-radius: 4px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--gray-dark);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      transition: border-color 0.3s;
+      cursor: pointer;
+    }
+
+    .photo-placeholder:hover { border-color: rgba(255,214,0,0.5); }
+    .photo-placeholder i { font-size: 32px; color: rgba(255,214,0,0.3); }
+
+    /* =3D=3D=3D=3D=3D PRODUCTS SECTION =3D=3D=3D=3D=3D */
+    #products {
+      background: var(--black);
+    }
+
+    .products-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .products-filter {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--gray);
+      padding: 8px 18px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--yellow);
+      border-color: var(--yellow);
+      color: var(--black);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--dark);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,214,0,0.3);
+    }
+
+    .product-img {
+      width: 100%;
+      height: 260px;
+      background: var(--dark2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--gray-dark);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .product-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,0.01) 40px,
+        rgba(255,255,255,0.01) 41px
+      );
+    }
+
+    .product-img i { font-size: 40px; color: rgba(255,214,0,0.2); }
+
+    .product-badge {
+      position: absolute;
+      top: 14px; left: 14px;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      text-transform: uppercase;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-category {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      font-family: 'Rajdhani', sans-serif;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .product-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      color: var(--yellow);
+      letter-spacing: 1px;
+    }
+
+    .product-price span {
+      font-size: 14px;
+      color: var(--gray-dark);
+      font-family: 'Poppins', sans-serif;
+      text-decoration: line-through;
+      margin-left: 8px;
+      font-weight: 300;
+    }
+
+    .product-btn {
+      margin-top: 14px;
+      width: 100%;
+      padding: 10px;
+      background: transparent;
+      border: 1px solid rgba(255,214,0,0.3);
+      color: var(--yellow);
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .product-btn:hover {
+      background: var(--yellow);
+      color: var(--black);
+    }
+
+    /* =3D=3D=3D=3D=3D SHOP SECTION =3D=3D=3D=3D=3D */
+    #shop {
+      background: var(--dark);
+      position: relative;
+    }
+
+    .shop-intro {
+      max-width: 600px;
+      margin-bottom: 60px;
+    }
+
+    .shop-intro .about-text { margin-top: 14px; }
+
+    .shop-gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 300px 300px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      background: var(--dark2);
+      border: 2px dashed rgba(255,214,0,0.15);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--gray-dark);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item:hover {
+      border-color: rgba(255,214,0,0.4);
+      background: rgba(255,214,0,0.03);
+    }
+
+    .gallery-item i { font-size: 36px; color: rgba(255,214,0,0.25); }
+
+    .gallery-item.large { grid-row: 1 / 3; }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s;
+    }
+
+    .gallery-item:hover .gallery-overlay { transform: translateY(0); }
+
+    .gallery-overlay span {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--yellow);
+    }
+
+    /* =3D=3D=3D=3D=3D CONTACT SECTION =3D=3D=3D=3D=3D */
+    #contact {
+      background: var(--black);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 50px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      margin-bottom: 32px;
+    }
+
+    .contact-icon {
+      width: 46px; height: 46px;
+      background: rgba(255,214,0,0.1);
+      border: 1px solid rgba(255,214,0,0.2);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--yellow);
+      font-size: 18px;
+    }
+
+    .contact-detail h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .contact-detail p, .contact-detail a {
+      font-size: 14px;
+      color: var(--gray-dark);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-detail a:hover { color: var(--yellow); }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      background: var(--dark);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 2px;
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.3s;
+      resize: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: rgba(255,214,0,0.4);
+    }
+
+    .form-group textarea { height: 120px; }
+
+    .form-submit {
+      background: var(--yellow);
+      color: var(--black);
+      border: none;
+      padding: 14px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.3s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      align-self: flex-start;
+    }
+
+    .form-submit:hover {
+      background: var(--yellow-light);
+      transform: translateY(-2px);
+    }
+
+    /* =3D=3D=3D=3D=3D WAVE FOOTER =3D=3D=3D=3D=3D */
+    footer {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer-wave {
+      display: block;
+      width: 100%;
+      line-height: 0;
+    }
+
+    .footer-wave svg { display: block; width: 100%; }
+
+    .footer-body {
+      padding: 60px 60px 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 50px;
+    }
+
+    .footer-brand .brand-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--yellow);
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--gray-dark);
+      max-width: 280px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .social-link {
+      width: 38px; height: 38px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-dark);
+      text-decoration: none;
+      font-size: 15px;
+      transition: all 0.3s;
+    }
+
+    .social-link:hover {
+      background: var(--yellow);
+      color: var(--black);
+      border-color: var(--yellow);
+    }
+
+    .footer-col h5 {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,214,0,0.2);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: var(--gray-dark);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a i { font-size: 11px; color: var(--yellow); }
+    .footer-links a:hover { color: var(--yellow); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 13px;
+      color: var(--gray-dark);
+    }
+
+    .footer-copy span { color: var(--yellow); }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 12px;
+      color: var(--gray-dark);
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .footer-bottom-links a:hover { color: var(--yellow); }
+
+    /* =3D=3D=3D=3D=3D TICKER STRIP =3D=3D=3D=3D=3D */
+    .ticker {
+      background: var(--yellow);
+      padding: 12px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 20s linear infinite;
+    }
+
+    .ticker-inner span {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 3px;
+      color: var(--black);
+      margin: 0 32px;
+    }
+
+    .ticker-inner span i { margin-right: 8px; }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* =3D=3D=3D=3D=3D RESPONSIVE =3D=3D=3D=3D=3D */
+    @media (max-width: 1024px) {
+      nav { padding: 16px 30px; }
+      section { padding: 80px 30px; }
+      .about-inner { grid-template-columns: 1fr; gap: 50px; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .shop-gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-item.large { grid-row: auto; }
+      .contact-grid { grid-template-columns: 1fr; gap: 50px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-body { padding: 50px 30px 30px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      section { padding: 70px 20px; }
+      .products-grid { grid-template-columns: 1fr; }
+      .shop-gallery { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =3D=3D=3D=3D=3D NAVBAR =3D=3D=3D=3D=3D -->
+  <nav>
+    <a href=3D"#home" class=3D"nav-logo">THE 499 STORE</a>
+    <ul class=3D"nav-links">
+      <li><a href=3D"#home"><i class=3D"fa-solid fa-house"></i>Home</a></li=
+>
+      <li><a href=3D"#about"><i class=3D"fa-solid
+fa-circle-info"></i>About</a></li>
+      <li><a href=3D"#products"><i class=3D"fa-solid
+fa-shirt"></i>Products</a></li>
+      <li><a href=3D"#shop"><i class=3D"fa-solid fa-store"></i>Shop</a></li=
+>
+      <li><a href=3D"#contact"><i class=3D"fa-solid
+fa-phone"></i>Contact</a></li>
+    </ul>
+    <a href=3D"#contact" class=3D"nav-cta"><i class=3D"fa-solid fa-bolt"></=
+i>
+&nbsp;Visit Us</a>
+  </nav>
+
+  <!-- =3D=3D=3D=3D=3D TICKER =3D=3D=3D=3D=3D -->
+  <div style=3D"margin-top:72px;" class=3D"ticker">
+    <div class=3D"ticker-inner">
+      <span><i class=3D"fa-solid fa-star"></i>CLOTHES</span>
+      <span><i class=3D"fa-solid fa-shoe-prints"></i>SHOES</span>
+      <span><i class=3D"fa-solid fa-clock"></i>WATCHES</span>
+      <span><i class=3D"fa-solid fa-tag"></i>STARTING FROM =E2=82=B9499</sp=
+an>
+      <span><i class=3D"fa-solid fa-fire"></i>NEW ARRIVALS</span>
+      <span><i class=3D"fa-solid fa-truck"></i>VISIT IN STORE</span>
+      <span><i class=3D"fa-solid fa-star"></i>CLOTHES</span>
+      <span><i class=3D"fa-solid fa-shoe-prints"></i>SHOES</span>
+      <span><i class=3D"fa-solid fa-clock"></i>WATCHES</span>
+      <span><i class=3D"fa-solid fa-tag"></i>STARTING FROM =E2=82=B9499</sp=
+an>
+      <span><i class=3D"fa-solid fa-fire"></i>NEW ARRIVALS</span>
+      <span><i class=3D"fa-solid fa-truck"></i>VISIT IN STORE</span>
+    </div>
+  </div>
+
+  <!-- =3D=3D=3D=3D=3D HERO SECTION =3D=3D=3D=3D=3D -->
+  <section id=3D"home">
+    <div class=3D"hero-tag"><i class=3D"fa-solid fa-bolt"></i> &nbsp; Style=
+.
+Quality. Value.</div>
+    <h1 class=3D"hero-title">THE 499<br>STORE</h1>
+    <p class=3D"hero-subtitle">Clothes &nbsp;|&nbsp; Shoes &nbsp;|&nbsp;
+Watches</p>
+    <p class=3D"hero-desc">Fashion that doesn't break the bank. Discover th=
+e
+latest trends in clothing, footwear & timepieces =E2=80=94 all starting at =
+just
+=E2=82=B9499.</p>
+    <div class=3D"hero-badges">
+      <div class=3D"hero-badge"><i class=3D"fa-solid fa-shirt"></i> Trendy
+Clothes</div>
+      <div class=3D"hero-badge"><i class=3D"fa-solid fa-shoe-prints"></i>
+Premium Shoes</div>
+      <div class=3D"hero-badge"><i class=3D"fa-solid fa-clock"></i> Stylish
+Watches</div>
+    </div>
+    <div class=3D"hero-scroll">
+      <i class=3D"fa-solid fa-chevron-down"></i>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- =3D=3D=3D=3D=3D ABOUT US SECTION =3D=3D=3D=3D=3D -->
+  <section id=3D"about">
+    <div class=3D"about-inner">
+      <div class=3D"about-left">
+        <div class=3D"section-label"><i class=3D"fa-solid fa-circle-info"><=
+/i>
+About Us</div>
+        <h2 class=3D"section-title">We Are <span>THE 499</span><br>STORE</h=
+2>
+        <p class=3D"about-text">THE 499 STORE is your one-stop destination
+for affordable yet stylish fashion. From the latest trends in clothing to
+comfortable footwear and premium-look watches, we bring quality to every
+price point.</p>
+        <p class=3D"about-text">Our mission is simple =E2=80=94 help you lo=
+ok your
+best without spending a fortune. Founded with a passion for fashion and
+accessibility, we serve thousands of satisfied customers across multiple
+locations.</p>
+
+        <div class=3D"owner-card">
+          <div class=3D"owner-icon"><i class=3D"fa-solid fa-user-tie"></i><=
+/div>
+          <div class=3D"owner-info">
+            <h4>Owner Name Here</h4>
+            <p><i class=3D"fa-solid fa-pen"></i> &nbsp; Founder & Owner
+&nbsp;=C2=B7&nbsp; THE 499 STORE</p>
+          </div>
+        </div>
+
+        <div class=3D"stats-row">
+          <div class=3D"stat-item">
+            <div class=3D"stat-num">3+</div>
+            <div class=3D"stat-label"><i class=3D"fa-solid fa-store"></i>
+Branches</div>
+          </div>
+          <div class=3D"stat-item">
+            <div class=3D"stat-num">5K+</div>
+            <div class=3D"stat-label"><i class=3D"fa-solid fa-users"></i>
+Customers</div>
+          </div>
+          <div class=3D"stat-item">
+            <div class=3D"stat-num">499</div>
+            <div class=3D"stat-label"><i class=3D"fa-solid fa-tag"></i> Fro=
+m
+(=E2=82=B9)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class=3D"about-right">
+        <div class=3D"branches-title"><i class=3D"fa-solid
+fa-location-dot"></i> Our Branches</div>
+
+        <div class=3D"branch-card">
+          <h4><i class=3D"fa-solid fa-store"
+style=3D"color:var(--yellow);margin-right:8px;"></i>Branch 1 =E2=80=94 Main
+Outlet</h4>
+          <p><i class=3D"fa-solid fa-map-pin"></i> Location Name Here =E2=
+=80=94 City,
+State</p>
+        </div>
+        <div class=3D"branch-card">
+          <h4><i class=3D"fa-solid fa-store"
+style=3D"color:var(--yellow);margin-right:8px;"></i>Branch 2 =E2=80=94 City
+Centre</h4>
+          <p><i class=3D"fa-solid fa-map-pin"></i> Location Name Here =E2=
+=80=94 City,
+State</p>
+        </div>
+        <div class=3D"branch-card">
+          <h4><i class=3D"fa-solid fa-store"
+style=3D"color:var(--yellow);margin-right:8px;"></i>Branch 3 =E2=80=94 Mark=
+et Hub</h4>
+          <p><i class=3D"fa-solid fa-map-pin"></i> Location Name Here =E2=
+=80=94 City,
+State</p>
+        </div>
+
+        <!-- Photo placeholder -->
+        <div class=3D"photo-placeholder">
+          <i class=3D"fa-solid fa-camera"></i>
+          <span>Add Your Branch Photo Here</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =3D=3D=3D=3D=3D PRODUCTS SECTION =3D=3D=3D=3D=3D -->
+  <section id=3D"products">
+    <div class=3D"products-header">
+      <div>
+        <div class=3D"section-label"><i class=3D"fa-solid fa-shirt"></i> Ou=
+r
+Collection</div>
+        <h2 class=3D"section-title">Our <span>Products</span></h2>
+      </div>
+      <div class=3D"products-filter">
+        <button class=3D"filter-btn active"><i class=3D"fa-solid
+fa-border-all"></i> All</button>
+        <button class=3D"filter-btn"><i class=3D"fa-solid fa-shirt"></i>
+Clothes</button>
+        <button class=3D"filter-btn"><i class=3D"fa-solid fa-shoe-prints"><=
+/i>
+Shoes</button>
+        <button class=3D"filter-btn"><i class=3D"fa-solid fa-clock"></i>
+Watches</button>
+      </div>
+    </div>
+
+    <div class=3D"products-grid">
+
+      <!-- Product 1 -->
+      <div class=3D"product-card">
+        <div class=3D"product-img">
+          <div class=3D"product-badge">New Arrival</div>
+          <i class=3D"fa-solid fa-shirt"></i>
+          <span>Add Product Photo</span>
+        </div>
+        <div class=3D"product-info">
+          <div class=3D"product-category"><i class=3D"fa-solid fa-shirt"></=
+i>
+Clothing</div>
+          <div class=3D"product-name">Stylish Casual Shirt</div>
+          <div class=3D"product-price">=E2=82=B9499 <span>=E2=82=B9999</spa=
+n></div>
+          <button class=3D"product-btn"><i class=3D"fa-solid fa-eye"></i> V=
+iew
+Product</button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class=3D"product-card">
+        <div class=3D"product-img">
+          <div class=3D"product-badge">Bestseller</div>
+          <i class=3D"fa-solid fa-shoe-prints"></i>
+          <span>Add Product Photo</span>
+        </div>
+        <div class=3D"product-info">
+          <div class=3D"product-category"><i class=3D"fa-solid
+fa-shoe-prints"></i> Footwear</div>
+          <div class=3D"product-name">Premium Sneakers</div>
+          <div class=3D"product-price">=E2=82=B9499 <span>=E2=82=B91,299</s=
+pan></div>
+          <button class=3D"product-btn"><i class=3D"fa-solid fa-eye"></i> V=
+iew
+Product</button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class=3D"product-card">
+        <div class=3D"product-img">
+          <div class=3D"product-badge">Hot Deal</div>
+          <i class=3D"fa-solid fa-clock"></i>
+          <span>Add Product Photo</span>
+        </div>
+        <div class=3D"product-info">
+          <div class=3D"product-category"><i class=3D"fa-solid fa-clock"></=
+i>
+Watches</div>
+          <div class=3D"product-name">Classic Analog Watch</div>
+          <div class=3D"product-price">=E2=82=B9499 <span>=E2=82=B91,599</s=
+pan></div>
+          <button class=3D"product-btn"><i class=3D"fa-solid fa-eye"></i> V=
+iew
+Product</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class=3D"product-card">
+        <div class=3D"product-img">
+          <i class=3D"fa-solid fa-vest"></i>
+          <span>Add Product Photo</span>
+        </div>
+        <div class=3D"product-info">
+          <div class=3D"product-category"><i class=3D"fa-solid fa-shirt"></=
+i>
+Clothing</div>
+          <div class=3D"product-name">Formal Trousers</div>
+          <div class=3D"product-price">=E2=82=B9499 <span>=E2=82=B9899</spa=
+n></div>
+          <button class=3D"product-btn"><i class=3D"fa-solid fa-eye"></i> V=
+iew
+Product</button>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class=3D"product-card">
+        <div class=3D"product-img">
+          <div class=3D"product-badge">New</div>
+          <i class=3D"fa-solid fa-shoe-prints"></i>
+          <span>Add Product Photo</span>
+        </div>
+        <div class=3D"product-info">
+          <div class=3D"product-category"><i class=3D"fa-solid
+fa-shoe-prints"></i> Footwear</div>
+          <div class=3D"product-name">Leather Loafers</div>
+          <div class=3D"product-price">=E2=82=B9499 <span>=E2=82=B91,199</s=
+pan></div>
+          <button class=3D"product-btn"><i class=3D"fa-solid fa-eye"></i> V=
+iew
+Product</button>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class=3D"product-card">
+        <div class=3D"product-img">
+          <i class=3D"fa-solid fa-clock"></i>
+          <span>Add Product Photo</span>
+        </div>
+        <div class=3D"product-info">
+          <div class=3D"product-category"><i class=3D"fa-solid fa-clock"></=
+i>
+Watches</div>
+          <div class=3D"product-name">Sports Digital Watch</div>
+          <div class=3D"product-price">=E2=82=B9499 <span>=E2=82=B91,099</s=
+pan></div>
+          <button class=3D"product-btn"><i class=3D"fa-solid fa-eye"></i> V=
+iew
+Product</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =3D=3D=3D=3D=3D SHOP SECTION =3D=3D=3D=3D=3D -->
+  <section id=3D"shop">
+    <div class=3D"shop-intro">
+      <div class=3D"section-label"><i class=3D"fa-solid fa-store"></i> Our
+Store</div>
+      <h2 class=3D"section-title">Visit Our <span>Shop</span></h2>
+      <p class=3D"about-text" style=3D"margin-top:14px;">Step inside THE 49=
+9
+STORE and experience fashion firsthand. Our stores are designed to give you
+a comfortable, exciting and easy shopping experience.</p>
+    </div>
+
+    <div class=3D"shop-gallery">
+      <div class=3D"gallery-item large">
+        <i class=3D"fa-solid fa-store"></i>
+        <span>Main Shop Photo =E2=80=94 Add Here</span>
+        <div class=3D"gallery-overlay"><span><i class=3D"fa-solid
+fa-location-dot"></i> Main Branch</span></div>
+      </div>
+      <div class=3D"gallery-item">
+        <i class=3D"fa-solid fa-door-open"></i>
+        <span>Shop Interior</span>
+        <div class=3D"gallery-overlay"><span><i class=3D"fa-solid
+fa-couch"></i> Interior View</span></div>
+      </div>
+      <div class=3D"gallery-item">
+        <i class=3D"fa-solid fa-shirt"></i>
+        <span>Clothing Section</span>
+        <div class=3D"gallery-overlay"><span><i class=3D"fa-solid
+fa-shirt"></i> Clothing</span></div>
+      </div>
+      <div class=3D"gallery-item">
+        <i class=3D"fa-solid fa-shoe-prints"></i>
+        <span>Shoes Section</span>
+        <div class=3D"gallery-overlay"><span><i class=3D"fa-solid
+fa-shoe-prints"></i> Footwear</span></div>
+      </div>
+      <div class=3D"gallery-item">
+        <i class=3D"fa-solid fa-clock"></i>
+        <span>Watches Display</span>
+        <div class=3D"gallery-overlay"><span><i class=3D"fa-solid
+fa-clock"></i> Watches</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =3D=3D=3D=3D=3D CONTACT SECTION =3D=3D=3D=3D=3D -->
+  <section id=3D"contact">
+    <div class=3D"section-label"><i class=3D"fa-solid fa-phone"></i> Get In
+Touch</div>
+    <h2 class=3D"section-title">Contact <span>Us</span></h2>
+
+    <div class=3D"contact-grid">
+      <div>
+        <div class=3D"contact-item">
+          <div class=3D"contact-icon"><i class=3D"fa-solid
+fa-map-location-dot"></i></div>
+          <div class=3D"contact-detail">
+            <h4>Our Location</h4>
+            <p>Main Branch Address Here, City, State =E2=80=94 PIN</p>
+          </div>
+        </div>
+        <div class=3D"contact-item">
+          <div class=3D"contact-icon"><i class=3D"fa-solid fa-phone"></i></=
+div>
+          <div class=3D"contact-detail">
+            <h4>Phone Number</h4>
+            <a href=3D"tel:+910000000000">+91 00000 00000</a>
+          </div>
+        </div>
+        <div class=3D"contact-item">
+          <div class=3D"contact-icon"><i class=3D"fa-brands
+fa-whatsapp"></i></div>
+          <div class=3D"contact-detail">
+            <h4>WhatsApp</h4>
+            <a href=3D"https://wa.me/910000000000" target=3D"_blank">Chat w=
+ith
+us on WhatsApp</a>
+          </div>
+        </div>
+        <div class=3D"contact-item">
+          <div class=3D"contact-icon"><i class=3D"fa-solid
+fa-envelope"></i></div>
+          <div class=3D"contact-detail">
+            <h4>Email</h4>
+            <a href=3D"mailto:info@the499store.com">info@the499store.com</a=
+>
+          </div>
+        </div>
+        <div class=3D"contact-item">
+          <div class=3D"contact-icon"><i class=3D"fa-solid fa-clock"></i></=
+div>
+          <div class=3D"contact-detail">
+            <h4>Store Hours</h4>
+            <p>Mon =E2=80=93 Sat: 10:00 AM =E2=80=93 9:00 PM</p>
+            <p>Sunday: 11:00 AM =E2=80=93 7:00 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class=3D"contact-form">
+        <h3
+style=3D"font-family:'Rajdhani',sans-serif;font-size:20px;font-weight:700;c=
+olor:var(--white);margin-bottom:8px;">
+          <i class=3D"fa-solid fa-message"
+style=3D"color:var(--yellow);margin-right:8px;"></i>Send Us a Message
+        </h3>
+        <div class=3D"form-group">
+          <label>Your Name</label>
+          <input type=3D"text" placeholder=3D"Enter your name" />
+        </div>
+        <div class=3D"form-group">
+          <label>Phone / Email</label>
+          <input type=3D"text" placeholder=3D"Enter phone or email" />
+        </div>
+        <div class=3D"form-group">
+          <label>Message</label>
+          <textarea placeholder=3D"Write your message here..."></textarea>
+        </div>
+        <button class=3D"form-submit"><i class=3D"fa-solid fa-paper-plane">=
+</i>
+Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =3D=3D=3D=3D=3D FOOTER =3D=3D=3D=3D=3D -->
+  <footer>
+    <!-- Wave SVG -->
+    <div class=3D"footer-wave">
+      <svg viewBox=3D"0 0 1440 80" fill=3D"none" xmlns=3D"
+http://www.w3.org/2000/svg" preserveAspectRatio=3D"none">
+        <path d=3D"M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,8=
+0
+1380,20 1440,40 L1440,80 L0,80 Z" fill=3D"#1A1A1A"/>
+      </svg>
+    </div>
+
+    <div class=3D"footer-body">
+      <div class=3D"footer-grid">
+
+        <div class=3D"footer-brand">
+          <span class=3D"brand-name">THE 499 STORE</span>
+          <p>Fashion that fits your budget. Clothes, shoes & watches =E2=80=
+=94 all
+starting at just =E2=82=B9499. Quality style for everyone, everywhere.</p>
+          <div class=3D"footer-socials">
+            <a href=3D"#" class=3D"social-link"><i class=3D"fa-brands
+fa-instagram"></i></a>
+            <a href=3D"#" class=3D"social-link"><i class=3D"fa-brands
+fa-facebook"></i></a>
+            <a href=3D"#" class=3D"social-link"><i class=3D"fa-brands
+fa-whatsapp"></i></a>
+            <a href=3D"#" class=3D"social-link"><i class=3D"fa-brands
+fa-youtube"></i></a>
+            <a href=3D"#" class=3D"social-link"><i class=3D"fa-brands
+fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class=3D"footer-col">
+          <h5><i class=3D"fa-solid fa-link"
+style=3D"margin-right:6px;color:var(--yellow);"></i>Quick Links</h5>
+          <ul class=3D"footer-links">
+            <li><a href=3D"#home"><i class=3D"fa-solid
+fa-chevron-right"></i>Home</a></li>
+            <li><a href=3D"#about"><i class=3D"fa-solid
+fa-chevron-right"></i>About Us</a></li>
+            <li><a href=3D"#products"><i class=3D"fa-solid
+fa-chevron-right"></i>Products</a></li>
+            <li><a href=3D"#shop"><i class=3D"fa-solid
+fa-chevron-right"></i>Our Shop</a></li>
+            <li><a href=3D"#contact"><i class=3D"fa-solid
+fa-chevron-right"></i>Contact</a></li>
+          </ul>
+        </div>
+
+        <div class=3D"footer-col">
+          <h5><i class=3D"fa-solid fa-bag-shopping"
+style=3D"margin-right:6px;color:var(--yellow);"></i>Categories</h5>
+          <ul class=3D"footer-links">
+            <li><a href=3D"#products"><i class=3D"fa-solid
+fa-shirt"></i>Clothing</a></li>
+            <li><a href=3D"#products"><i class=3D"fa-solid
+fa-shoe-prints"></i>Footwear</a></li>
+            <li><a href=3D"#products"><i class=3D"fa-solid
+fa-clock"></i>Watches</a></li>
+            <li><a href=3D"#products"><i class=3D"fa-solid fa-fire"></i>New
+Arrivals</a></li>
+            <li><a href=3D"#products"><i class=3D"fa-solid fa-tag"></i>Sale
+Items</a></li>
+          </ul>
+        </div>
+
+        <div class=3D"footer-col">
+          <h5><i class=3D"fa-solid fa-location-dot"
+style=3D"margin-right:6px;color:var(--yellow);"></i>Find Us</h5>
+          <ul class=3D"footer-links">
+            <li><a href=3D"#shop"><i class=3D"fa-solid fa-store"></i>Main
+Branch</a></li>
+            <li><a href=3D"#shop"><i class=3D"fa-solid fa-store"></i>City
+Centre Branch</a></li>
+            <li><a href=3D"#shop"><i class=3D"fa-solid fa-store"></i>Market=
+ Hub
+Branch</a></li>
+            <li><a href=3D"#contact"><i class=3D"fa-solid fa-phone"></i>+91
+00000 00000</a></li>
+            <li><a href=3D"mailto:info@the499store.com"><i class=3D"fa-soli=
+d
+fa-envelope"></i>Email Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class=3D"footer-bottom">
+        <p class=3D"footer-copy">&copy; 2025 <span>THE 499 STORE</span>. Al=
+l
+Rights Reserved. Made with <i class=3D"fa-solid fa-heart"
+style=3D"color:var(--yellow);"></i> for Fashion.</p>
+        <div class=3D"footer-bottom-links">
+          <a href=3D"#">Privacy Policy</a>
+          <a href=3D"#">Terms of Use</a>
+          <a href=3D"#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =3D=3D=3D=3D=3D FILTER JS =3D=3D=3D=3D=3D -->
+  <script>
+    const filterBtns =3D document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn =3D> {
+      btn.addEventListener('click', () =3D> {
+        filterBtns.forEach(b =3D> b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+--00000000000068815b064e37786e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">&lt;!DOCTYPE html&gt;<br>&lt;html lang=3D&quot;en&quot;&gt=
+;<br>&lt;head&gt;<br>=C2=A0 &lt;meta charset=3D&quot;UTF-8&quot; /&gt;<br>=
+=C2=A0 &lt;meta name=3D&quot;viewport&quot; content=3D&quot;width=3Ddevice-=
+width, initial-scale=3D1.0&quot;/&gt;<br>=C2=A0 &lt;title&gt;THE 499 STORE&=
+lt;/title&gt;<br><br>=C2=A0 &lt;!-- Font Awesome 6 CDN --&gt;<br>=C2=A0 &lt=
+;link rel=3D&quot;stylesheet&quot; href=3D&quot;<a href=3D"https://cdnjs.cl=
+oudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">https://cdnjs.cl=
+oudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css</a>&quot;/&gt;<br=
+><br>=C2=A0 &lt;!-- Google Fonts --&gt;<br>=C2=A0 &lt;link href=3D&quot;<a =
+href=3D"https://fonts.googleapis.com/css2?family=3DBebas+Neue&amp;family=3D=
+Rajdhani:wght@400;600;700&amp;family=3DPoppins:wght@300;400;600&amp;display=
+=3Dswap">https://fonts.googleapis.com/css2?family=3DBebas+Neue&amp;family=
+=3DRajdhani:wght@400;600;700&amp;family=3DPoppins:wght@300;400;600&amp;disp=
+lay=3Dswap</a>&quot; rel=3D&quot;stylesheet&quot;/&gt;<br><br>=C2=A0 &lt;st=
+yle&gt;<br>=C2=A0 =C2=A0 /* =3D=3D=3D=3D=3D ROOT VARIABLES =3D=3D=3D=3D=3D =
+*/<br>=C2=A0 =C2=A0 :root {<br>=C2=A0 =C2=A0 =C2=A0 --yellow: #FFD600;<br>=
+=C2=A0 =C2=A0 =C2=A0 --yellow-light: #FFE44D;<br>=C2=A0 =C2=A0 =C2=A0 --bla=
+ck: #0A0A0A;<br>=C2=A0 =C2=A0 =C2=A0 --dark: #111111;<br>=C2=A0 =C2=A0 =C2=
+=A0 --dark2: #1A1A1A;<br>=C2=A0 =C2=A0 =C2=A0 --white: #FFFFFF;<br>=C2=A0 =
+=C2=A0 =C2=A0 --gray: #CCCCCC;<br>=C2=A0 =C2=A0 =C2=A0 --gray-dark: #555555=
+;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 * { margin: 0; padding: 0; box-si=
+zing: border-box; }<br><br>=C2=A0 =C2=A0 html { scroll-behavior: smooth; }<=
+br><br>=C2=A0 =C2=A0 body {<br>=C2=A0 =C2=A0 =C2=A0 background: var(--black=
+);<br>=C2=A0 =C2=A0 =C2=A0 color: var(--white);<br>=C2=A0 =C2=A0 =C2=A0 fon=
+t-family: &#39;Poppins&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 overflow-x=
+: hidden;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 /* =3D=3D=3D=3D=3D SCROLL=
+BAR =3D=3D=3D=3D=3D */<br>=C2=A0 =C2=A0 ::-webkit-scrollbar { width: 6px; }=
+<br>=C2=A0 =C2=A0 ::-webkit-scrollbar-track { background: var(--black); }<b=
+r>=C2=A0 =C2=A0 ::-webkit-scrollbar-thumb { background: var(--yellow); bord=
+er-radius: 3px; }<br><br>=C2=A0 =C2=A0 /* =3D=3D=3D=3D=3D NAVBAR =3D=3D=3D=
+=3D=3D */<br>=C2=A0 =C2=A0 nav {<br>=C2=A0 =C2=A0 =C2=A0 position: fixed;<b=
+r>=C2=A0 =C2=A0 =C2=A0 top: 0; left: 0; right: 0;<br>=C2=A0 =C2=A0 =C2=A0 z=
+-index: 1000;<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=
+=A0 align-items: center;<br>=C2=A0 =C2=A0 =C2=A0 justify-content: space-bet=
+ween;<br>=C2=A0 =C2=A0 =C2=A0 padding: 18px 60px;<br>=C2=A0 =C2=A0 =C2=A0 b=
+ackground: rgba(10,10,10,0.95);<br>=C2=A0 =C2=A0 =C2=A0 backdrop-filter: bl=
+ur(10px);<br>=C2=A0 =C2=A0 =C2=A0 border-bottom: 1px solid rgba(255,214,0,0=
+.15);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .nav-logo {<br>=C2=A0 =C2=A0 =
+=C2=A0 font-family: &#39;Bebas Neue&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=
+=A0 font-size: 26px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--yellow);<br>=C2=
+=A0 =C2=A0 =C2=A0 letter-spacing: 3px;<br>=C2=A0 =C2=A0 =C2=A0 text-decorat=
+ion: none;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .nav-links {<br>=C2=A0 =
+=C2=A0 =C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 gap: 36px;<br>=C2=A0 =
+=C2=A0 =C2=A0 list-style: none;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .na=
+v-links a {<br>=C2=A0 =C2=A0 =C2=A0 color: var(--white);<br>=C2=A0 =C2=A0 =
+=C2=A0 text-decoration: none;<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Raj=
+dhani&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-weight: 600;<br>=C2=A0=
+ =C2=A0 =C2=A0 font-size: 15px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 1.5=
+px;<br>=C2=A0 =C2=A0 =C2=A0 text-transform: uppercase;<br>=C2=A0 =C2=A0 =C2=
+=A0 transition: color 0.3s;<br>=C2=A0 =C2=A0 =C2=A0 position: relative;<br>=
+=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .nav-links a::after {<br>=C2=A0 =C2=A0=
+ =C2=A0 content: &#39;&#39;;<br>=C2=A0 =C2=A0 =C2=A0 position: absolute;<br=
+>=C2=A0 =C2=A0 =C2=A0 left: 0; bottom: -4px;<br>=C2=A0 =C2=A0 =C2=A0 width:=
+ 0; height: 2px;<br>=C2=A0 =C2=A0 =C2=A0 background: var(--yellow);<br>=C2=
+=A0 =C2=A0 =C2=A0 transition: width 0.3s;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =
+=C2=A0 .nav-links a:hover { color: var(--yellow); }<br>=C2=A0 =C2=A0 .nav-l=
+inks a:hover::after { width: 100%; }<br><br>=C2=A0 =C2=A0 .nav-links a i { =
+margin-right: 6px; font-size: 13px; }<br><br>=C2=A0 =C2=A0 .nav-cta {<br>=
+=C2=A0 =C2=A0 =C2=A0 background: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 col=
+or: var(--black);<br>=C2=A0 =C2=A0 =C2=A0 padding: 10px 24px;<br>=C2=A0 =C2=
+=A0 =C2=A0 border-radius: 2px;<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Ra=
+jdhani&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-weight: 700;<br>=C2=
+=A0 =C2=A0 =C2=A0 font-size: 14px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: =
+2px;<br>=C2=A0 =C2=A0 =C2=A0 text-decoration: none;<br>=C2=A0 =C2=A0 =C2=A0=
+ text-transform: uppercase;<br>=C2=A0 =C2=A0 =C2=A0 transition: background =
+0.3s, transform 0.2s;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .nav-cta:hove=
+r { background: var(--yellow-light); transform: translateY(-1px); }<br><br>=
+=C2=A0 =C2=A0 /* =3D=3D=3D=3D=3D HERO SECTION =3D=3D=3D=3D=3D */<br>=C2=A0 =
+=C2=A0 #home {<br>=C2=A0 =C2=A0 =C2=A0 min-height: 100vh;<br>=C2=A0 =C2=A0 =
+=C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 flex-direction: column;<br>=
+=C2=A0 =C2=A0 =C2=A0 align-items: center;<br>=C2=A0 =C2=A0 =C2=A0 justify-c=
+ontent: center;<br>=C2=A0 =C2=A0 =C2=A0 position: relative;<br>=C2=A0 =C2=
+=A0 =C2=A0 overflow: hidden;<br>=C2=A0 =C2=A0 =C2=A0 background: var(--blac=
+k);<br>=C2=A0 =C2=A0 =C2=A0 text-align: center;<br>=C2=A0 =C2=A0 =C2=A0 pad=
+ding: 100px 20px 60px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 /* Diagonal =
+stripe background */<br>=C2=A0 =C2=A0 #home::before {<br>=C2=A0 =C2=A0 =C2=
+=A0 content: &#39;&#39;;<br>=C2=A0 =C2=A0 =C2=A0 position: absolute;<br>=C2=
+=A0 =C2=A0 =C2=A0 top: -100px; left: -100px;<br>=C2=A0 =C2=A0 =C2=A0 width:=
+ 700px; height: 700px;<br>=C2=A0 =C2=A0 =C2=A0 background: repeating-linear=
+-gradient(<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 45deg,<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 rgba(255,214,0,0.03) 0px,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 rgba(255,21=
+4,0,0.03) 2px,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 transparent 2px,<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 transparent 20px<br>=C2=A0 =C2=A0 =C2=A0 );<br>=C2=A0 =
+=C2=A0 =C2=A0 border-radius: 50%;<br>=C2=A0 =C2=A0 =C2=A0 animation: rotate=
+Bg 30s linear infinite;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 #home::afte=
+r {<br>=C2=A0 =C2=A0 =C2=A0 content: &#39;&#39;;<br>=C2=A0 =C2=A0 =C2=A0 po=
+sition: absolute;<br>=C2=A0 =C2=A0 =C2=A0 bottom: -100px; right: -100px;<br=
+>=C2=A0 =C2=A0 =C2=A0 width: 600px; height: 600px;<br>=C2=A0 =C2=A0 =C2=A0 =
+background: repeating-linear-gradient(<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 -45de=
+g,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 rgba(255,214,0,0.03) 0px,<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 rgba(255,214,0,0.03) 2px,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+transparent 2px,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 transparent 20px<br>=C2=A0 =
+=C2=A0 =C2=A0 );<br>=C2=A0 =C2=A0 =C2=A0 border-radius: 50%;<br>=C2=A0 =C2=
+=A0 =C2=A0 animation: rotateBg 40s linear infinite reverse;<br>=C2=A0 =C2=
+=A0 }<br><br>=C2=A0 =C2=A0 @keyframes rotateBg {<br>=C2=A0 =C2=A0 =C2=A0 fr=
+om { transform: rotate(0deg); }<br>=C2=A0 =C2=A0 =C2=A0 to { transform: rot=
+ate(360deg); }<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .hero-tag {<br>=C2=
+=A0 =C2=A0 =C2=A0 font-family: &#39;Rajdhani&#39;, sans-serif;<br>=C2=A0 =
+=C2=A0 =C2=A0 font-size: 13px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 5px;=
+<br>=C2=A0 =C2=A0 =C2=A0 text-transform: uppercase;<br>=C2=A0 =C2=A0 =C2=A0=
+ color: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 margin-bottom: 20px;<br>=C2=
+=A0 =C2=A0 =C2=A0 border: 1px solid rgba(255,214,0,0.4);<br>=C2=A0 =C2=A0 =
+=C2=A0 padding: 6px 18px;<br>=C2=A0 =C2=A0 =C2=A0 display: inline-block;<br=
+>=C2=A0 =C2=A0 =C2=A0 animation: fadeDown 0.8s ease both;<br>=C2=A0 =C2=A0 =
+}<br><br>=C2=A0 =C2=A0 .hero-title {<br>=C2=A0 =C2=A0 =C2=A0 font-family: &=
+#39;Bebas Neue&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-size: clamp(9=
+0px, 18vw, 200px);<br>=C2=A0 =C2=A0 =C2=A0 line-height: 0.9;<br>=C2=A0 =C2=
+=A0 =C2=A0 color: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 4p=
+x;<br>=C2=A0 =C2=A0 =C2=A0 animation: fadeUp 0.9s ease 0.2s both;<br>=C2=A0=
+ =C2=A0 =C2=A0 text-shadow:<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 0 0 80px rgba(25=
+5,214,0,0.3),<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 0 0 160px rgba(255,214,0,0.1);=
+<br>=C2=A0 =C2=A0 =C2=A0 position: relative;<br>=C2=A0 =C2=A0 =C2=A0 z-inde=
+x: 2;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .hero-subtitle {<br>=C2=A0 =
+=C2=A0 =C2=A0 font-family: &#39;Rajdhani&#39;, sans-serif;<br>=C2=A0 =C2=A0=
+ =C2=A0 font-size: clamp(16px, 3vw, 26px);<br>=C2=A0 =C2=A0 =C2=A0 letter-s=
+pacing: 8px;<br>=C2=A0 =C2=A0 =C2=A0 text-transform: uppercase;<br>=C2=A0 =
+=C2=A0 =C2=A0 color: var(--white);<br>=C2=A0 =C2=A0 =C2=A0 margin-top: 10px=
+;<br>=C2=A0 =C2=A0 =C2=A0 animation: fadeUp 0.9s ease 0.4s both;<br>=C2=A0 =
+=C2=A0 =C2=A0 position: relative;<br>=C2=A0 =C2=A0 =C2=A0 z-index: 2;<br>=
+=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .hero-desc {<br>=C2=A0 =C2=A0 =C2=A0 m=
+ax-width: 500px;<br>=C2=A0 =C2=A0 =C2=A0 margin: 28px auto 0;<br>=C2=A0 =C2=
+=A0 =C2=A0 font-size: 15px;<br>=C2=A0 =C2=A0 =C2=A0 line-height: 1.8;<br>=
+=C2=A0 =C2=A0 =C2=A0 color: var(--gray);<br>=C2=A0 =C2=A0 =C2=A0 animation:=
+ fadeUp 0.9s ease 0.6s both;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .hero-=
+badges {<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 gap=
+: 20px;<br>=C2=A0 =C2=A0 =C2=A0 margin-top: 40px;<br>=C2=A0 =C2=A0 =C2=A0 f=
+lex-wrap: wrap;<br>=C2=A0 =C2=A0 =C2=A0 justify-content: center;<br>=C2=A0 =
+=C2=A0 =C2=A0 animation: fadeUp 0.9s ease 0.8s both;<br>=C2=A0 =C2=A0 }<br>=
+<br>=C2=A0 =C2=A0 .hero-badge {<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=
+=C2=A0 =C2=A0 =C2=A0 align-items: center;<br>=C2=A0 =C2=A0 =C2=A0 gap: 10px=
+;<br>=C2=A0 =C2=A0 =C2=A0 background: rgba(255,255,255,0.04);<br>=C2=A0 =C2=
+=A0 =C2=A0 border: 1px solid rgba(255,255,255,0.08);<br>=C2=A0 =C2=A0 =C2=
+=A0 padding: 12px 22px;<br>=C2=A0 =C2=A0 =C2=A0 border-radius: 2px;<br>=C2=
+=A0 =C2=A0 =C2=A0 font-family: &#39;Rajdhani&#39;, sans-serif;<br>=C2=A0 =
+=C2=A0 =C2=A0 font-weight: 600;<br>=C2=A0 =C2=A0 =C2=A0 font-size: 14px;<br=
+>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 1px;<br>=C2=A0 =C2=A0 =C2=A0 color: v=
+ar(--white);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .hero-badge i { color:=
+ var(--yellow); font-size: 18px; }<br><br>=C2=A0 =C2=A0 .hero-scroll {<br>=
+=C2=A0 =C2=A0 =C2=A0 position: absolute;<br>=C2=A0 =C2=A0 =C2=A0 bottom: 36=
+px;<br>=C2=A0 =C2=A0 =C2=A0 left: 50%;<br>=C2=A0 =C2=A0 =C2=A0 transform: t=
+ranslateX(-50%);<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =C2=A0 =
+=C2=A0 flex-direction: column;<br>=C2=A0 =C2=A0 =C2=A0 align-items: center;=
+<br>=C2=A0 =C2=A0 =C2=A0 gap: 8px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--gra=
+y-dark);<br>=C2=A0 =C2=A0 =C2=A0 font-size: 11px;<br>=C2=A0 =C2=A0 =C2=A0 l=
+etter-spacing: 3px;<br>=C2=A0 =C2=A0 =C2=A0 text-transform: uppercase;<br>=
+=C2=A0 =C2=A0 =C2=A0 animation: bounce 2s ease infinite;<br>=C2=A0 =C2=A0 }=
+<br><br>=C2=A0 =C2=A0 @keyframes bounce {<br>=C2=A0 =C2=A0 =C2=A0 0%, 100% =
+{ transform: translateX(-50%) translateY(0); }<br>=C2=A0 =C2=A0 =C2=A0 50% =
+{ transform: translateX(-50%) translateY(8px); }<br>=C2=A0 =C2=A0 }<br><br>=
+=C2=A0 =C2=A0 @keyframes fadeUp {<br>=C2=A0 =C2=A0 =C2=A0 from { opacity: 0=
+; transform: translateY(30px); }<br>=C2=A0 =C2=A0 =C2=A0 to =C2=A0 { opacit=
+y: 1; transform: translateY(0); }<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 @=
+keyframes fadeDown {<br>=C2=A0 =C2=A0 =C2=A0 from { opacity: 0; transform: =
+translateY(-20px); }<br>=C2=A0 =C2=A0 =C2=A0 to =C2=A0 { opacity: 1; transf=
+orm: translateY(0); }<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 /* =3D=3D=3D=
+=3D=3D SECTION COMMONS =3D=3D=3D=3D=3D */<br>=C2=A0 =C2=A0 section {<br>=C2=
+=A0 =C2=A0 =C2=A0 padding: 100px 60px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=
+=A0 .section-label {<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Rajdhani&#39=
+;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-size: 12px;<br>=C2=A0 =C2=A0 =
+=C2=A0 letter-spacing: 5px;<br>=C2=A0 =C2=A0 =C2=A0 text-transform: upperca=
+se;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 m=
+argin-bottom: 10px;<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =C2=A0=
+ =C2=A0 align-items: center;<br>=C2=A0 =C2=A0 =C2=A0 gap: 10px;<br>=C2=A0 =
+=C2=A0 }<br><br>=C2=A0 =C2=A0 .section-label::before {<br>=C2=A0 =C2=A0 =C2=
+=A0 content: &#39;&#39;;<br>=C2=A0 =C2=A0 =C2=A0 width: 30px; height: 2px;<=
+br>=C2=A0 =C2=A0 =C2=A0 background: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 =
+display: inline-block;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .section-tit=
+le {<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Bebas Neue&#39;, sans-serif;=
+<br>=C2=A0 =C2=A0 =C2=A0 font-size: clamp(36px, 5vw, 64px);<br>=C2=A0 =C2=
+=A0 =C2=A0 letter-spacing: 2px;<br>=C2=A0 =C2=A0 =C2=A0 line-height: 1.05;<=
+br>=C2=A0 =C2=A0 =C2=A0 color: var(--white);<br>=C2=A0 =C2=A0 }<br><br>=C2=
+=A0 =C2=A0 .section-title span { color: var(--yellow); }<br><br>=C2=A0 =C2=
+=A0 /* =3D=3D=3D=3D=3D ABOUT US =3D=3D=3D=3D=3D */<br>=C2=A0 =C2=A0 #about =
+{<br>=C2=A0 =C2=A0 =C2=A0 background: var(--dark);<br>=C2=A0 =C2=A0 =C2=A0 =
+position: relative;<br>=C2=A0 =C2=A0 =C2=A0 overflow: hidden;<br>=C2=A0 =C2=
+=A0 }<br><br>=C2=A0 =C2=A0 #about::before {<br>=C2=A0 =C2=A0 =C2=A0 content=
+: &#39;499&#39;;<br>=C2=A0 =C2=A0 =C2=A0 position: absolute;<br>=C2=A0 =C2=
+=A0 =C2=A0 right: -60px; top: 50%;<br>=C2=A0 =C2=A0 =C2=A0 transform: trans=
+lateY(-50%);<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Bebas Neue&#39;, san=
+s-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-size: 400px;<br>=C2=A0 =C2=A0 =C2=A0 =
+color: rgba(255,214,0,0.02);<br>=C2=A0 =C2=A0 =C2=A0 line-height: 1;<br>=C2=
+=A0 =C2=A0 =C2=A0 pointer-events: none;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =
+=C2=A0 .about-inner {<br>=C2=A0 =C2=A0 =C2=A0 display: grid;<br>=C2=A0 =C2=
+=A0 =C2=A0 grid-template-columns: 1fr 1fr;<br>=C2=A0 =C2=A0 =C2=A0 gap: 80p=
+x;<br>=C2=A0 =C2=A0 =C2=A0 align-items: start;<br>=C2=A0 =C2=A0 }<br><br>=
+=C2=A0 =C2=A0 .about-left .section-label,<br>=C2=A0 =C2=A0 .about-left .sec=
+tion-title { margin-bottom: 8px; }<br><br>=C2=A0 =C2=A0 .about-left .sectio=
+n-title { margin-bottom: 24px; }<br><br>=C2=A0 =C2=A0 .about-text {<br>=C2=
+=A0 =C2=A0 =C2=A0 font-size: 15px;<br>=C2=A0 =C2=A0 =C2=A0 line-height: 1.9=
+;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--gray);<br>=C2=A0 =C2=A0 =C2=A0 margi=
+n-bottom: 16px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .owner-card {<br>=
+=C2=A0 =C2=A0 =C2=A0 margin-top: 36px;<br>=C2=A0 =C2=A0 =C2=A0 background: =
+rgba(255,214,0,0.05);<br>=C2=A0 =C2=A0 =C2=A0 border: 1px solid rgba(255,21=
+4,0,0.2);<br>=C2=A0 =C2=A0 =C2=A0 padding: 24px 28px;<br>=C2=A0 =C2=A0 =C2=
+=A0 border-radius: 4px;<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =
+=C2=A0 =C2=A0 align-items: center;<br>=C2=A0 =C2=A0 =C2=A0 gap: 20px;<br>=
+=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .owner-icon {<br>=C2=A0 =C2=A0 =C2=A0 =
+width: 60px; height: 60px;<br>=C2=A0 =C2=A0 =C2=A0 background: var(--yellow=
+);<br>=C2=A0 =C2=A0 =C2=A0 border-radius: 50%;<br>=C2=A0 =C2=A0 =C2=A0 disp=
+lay: flex;<br>=C2=A0 =C2=A0 =C2=A0 align-items: center;<br>=C2=A0 =C2=A0 =
+=C2=A0 justify-content: center;<br>=C2=A0 =C2=A0 =C2=A0 flex-shrink: 0;<br>=
+=C2=A0 =C2=A0 =C2=A0 font-size: 24px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--=
+black);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .owner-info h4 {<br>=C2=A0 =
+=C2=A0 =C2=A0 font-family: &#39;Bebas Neue&#39;, sans-serif;<br>=C2=A0 =C2=
+=A0 =C2=A0 font-size: 22px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 2px;<br=
+>=C2=A0 =C2=A0 =C2=A0 color: var(--white);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0=
+ =C2=A0 .owner-info p {<br>=C2=A0 =C2=A0 =C2=A0 font-size: 12px;<br>=C2=A0 =
+=C2=A0 =C2=A0 color: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing:=
+ 2px;<br>=C2=A0 =C2=A0 =C2=A0 text-transform: uppercase;<br>=C2=A0 =C2=A0 =
+=C2=A0 font-family: &#39;Rajdhani&#39;, sans-serif;<br>=C2=A0 =C2=A0 }<br><=
+br>=C2=A0 =C2=A0 .stats-row {<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=
+=A0 =C2=A0 =C2=A0 gap: 32px;<br>=C2=A0 =C2=A0 =C2=A0 margin-top: 36px;<br>=
+=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .stat-item {<br>=C2=A0 =C2=A0 =C2=A0 t=
+ext-align: center;<br>=C2=A0 =C2=A0 =C2=A0 flex: 1;<br>=C2=A0 =C2=A0 =C2=A0=
+ background: rgba(255,255,255,0.03);<br>=C2=A0 =C2=A0 =C2=A0 border: 1px so=
+lid rgba(255,255,255,0.06);<br>=C2=A0 =C2=A0 =C2=A0 padding: 20px 10px;<br>=
+=C2=A0 =C2=A0 =C2=A0 border-radius: 4px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =
+=C2=A0 .stat-num {<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Bebas Neue&#39=
+;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-size: 40px;<br>=C2=A0 =C2=A0 =
+=C2=A0 color: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 line-height: 1;<br>=C2=
+=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .stat-label {<br>=C2=A0 =C2=A0 =C2=A0 fon=
+t-size: 11px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 2px;<br>=C2=A0 =C2=A0=
+ =C2=A0 text-transform: uppercase;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--gra=
+y-dark);<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Rajdhani&#39;, sans-seri=
+f;<br>=C2=A0 =C2=A0 =C2=A0 margin-top: 4px;<br>=C2=A0 =C2=A0 }<br><br>=C2=
+=A0 =C2=A0 .about-right {<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =
+=C2=A0 =C2=A0 flex-direction: column;<br>=C2=A0 =C2=A0 =C2=A0 gap: 24px;<br=
+>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .branches-title {<br>=C2=A0 =C2=A0 =
+=C2=A0 font-family: &#39;Rajdhani&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0=
+ font-size: 13px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 4px;<br>=C2=A0 =
+=C2=A0 =C2=A0 text-transform: uppercase;<br>=C2=A0 =C2=A0 =C2=A0 color: var=
+(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 margin-bottom: 16px;<br>=C2=A0 =C2=A0 =
+=C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 align-items: center;<br>=C2=
+=A0 =C2=A0 =C2=A0 gap: 8px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .branch=
+-card {<br>=C2=A0 =C2=A0 =C2=A0 background: var(--dark2);<br>=C2=A0 =C2=A0 =
+=C2=A0 border: 1px solid rgba(255,255,255,0.06);<br>=C2=A0 =C2=A0 =C2=A0 bo=
+rder-left: 3px solid var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 padding: 20px 2=
+4px;<br>=C2=A0 =C2=A0 =C2=A0 border-radius: 2px;<br>=C2=A0 =C2=A0 =C2=A0 tr=
+ansition: background 0.3s;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .branch-=
+card:hover { background: rgba(255,214,0,0.05); }<br><br>=C2=A0 =C2=A0 .bran=
+ch-card h4 {<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Rajdhani&#39;, sans-=
+serif;<br>=C2=A0 =C2=A0 =C2=A0 font-weight: 700;<br>=C2=A0 =C2=A0 =C2=A0 fo=
+nt-size: 17px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 1px;<br>=C2=A0 =C2=
+=A0 =C2=A0 color: var(--white);<br>=C2=A0 =C2=A0 =C2=A0 margin-bottom: 6px;=
+<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .branch-card p {<br>=C2=A0 =C2=A0 =
+=C2=A0 font-size: 13px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--gray-dark);<br=
+>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 align-items: c=
+enter;<br>=C2=A0 =C2=A0 =C2=A0 gap: 8px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =
+=C2=A0 .branch-card p i { color: var(--yellow); font-size: 12px; }<br><br>=
+=C2=A0 =C2=A0 .photo-placeholder {<br>=C2=A0 =C2=A0 =C2=A0 background: var(=
+--dark2);<br>=C2=A0 =C2=A0 =C2=A0 border: 2px dashed rgba(255,214,0,0.2);<b=
+r>=C2=A0 =C2=A0 =C2=A0 border-radius: 4px;<br>=C2=A0 =C2=A0 =C2=A0 height: =
+200px;<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 flex-=
+direction: column;<br>=C2=A0 =C2=A0 =C2=A0 align-items: center;<br>=C2=A0 =
+=C2=A0 =C2=A0 justify-content: center;<br>=C2=A0 =C2=A0 =C2=A0 gap: 12px;<b=
+r>=C2=A0 =C2=A0 =C2=A0 color: var(--gray-dark);<br>=C2=A0 =C2=A0 =C2=A0 fon=
+t-family: &#39;Rajdhani&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-size=
+: 13px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 1px;<br>=C2=A0 =C2=A0 =C2=
+=A0 transition: border-color 0.3s;<br>=C2=A0 =C2=A0 =C2=A0 cursor: pointer;=
+<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .photo-placeholder:hover { border-=
+color: rgba(255,214,0,0.5); }<br>=C2=A0 =C2=A0 .photo-placeholder i { font-=
+size: 32px; color: rgba(255,214,0,0.3); }<br><br>=C2=A0 =C2=A0 /* =3D=3D=3D=
+=3D=3D PRODUCTS SECTION =3D=3D=3D=3D=3D */<br>=C2=A0 =C2=A0 #products {<br>=
+=C2=A0 =C2=A0 =C2=A0 background: var(--black);<br>=C2=A0 =C2=A0 }<br><br>=
+=C2=A0 =C2=A0 .products-header {<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=
+=C2=A0 =C2=A0 =C2=A0 align-items: flex-end;<br>=C2=A0 =C2=A0 =C2=A0 justify=
+-content: space-between;<br>=C2=A0 =C2=A0 =C2=A0 margin-bottom: 60px;<br>=
+=C2=A0 =C2=A0 =C2=A0 flex-wrap: wrap;<br>=C2=A0 =C2=A0 =C2=A0 gap: 20px;<br=
+>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .products-filter {<br>=C2=A0 =C2=A0 =
+=C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 gap: 12px;<br>=C2=A0 =C2=A0 =
+=C2=A0 flex-wrap: wrap;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .filter-btn=
+ {<br>=C2=A0 =C2=A0 =C2=A0 background: transparent;<br>=C2=A0 =C2=A0 =C2=A0=
+ border: 1px solid rgba(255,255,255,0.1);<br>=C2=A0 =C2=A0 =C2=A0 color: va=
+r(--gray);<br>=C2=A0 =C2=A0 =C2=A0 padding: 8px 18px;<br>=C2=A0 =C2=A0 =C2=
+=A0 font-family: &#39;Rajdhani&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 fo=
+nt-size: 13px;<br>=C2=A0 =C2=A0 =C2=A0 font-weight: 600;<br>=C2=A0 =C2=A0 =
+=C2=A0 letter-spacing: 1px;<br>=C2=A0 =C2=A0 =C2=A0 text-transform: upperca=
+se;<br>=C2=A0 =C2=A0 =C2=A0 cursor: pointer;<br>=C2=A0 =C2=A0 =C2=A0 border=
+-radius: 2px;<br>=C2=A0 =C2=A0 =C2=A0 transition: all 0.3s;<br>=C2=A0 =C2=
+=A0 }<br><br>=C2=A0 =C2=A0 .filter-btn:hover,<br>=C2=A0 =C2=A0 .filter-btn.=
+active {<br>=C2=A0 =C2=A0 =C2=A0 background: var(--yellow);<br>=C2=A0 =C2=
+=A0 =C2=A0 border-color: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 color: var(=
+--black);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .products-grid {<br>=C2=
+=A0 =C2=A0 =C2=A0 display: grid;<br>=C2=A0 =C2=A0 =C2=A0 grid-template-colu=
+mns: repeat(3, 1fr);<br>=C2=A0 =C2=A0 =C2=A0 gap: 24px;<br>=C2=A0 =C2=A0 }<=
+br><br>=C2=A0 =C2=A0 .product-card {<br>=C2=A0 =C2=A0 =C2=A0 background: va=
+r(--dark);<br>=C2=A0 =C2=A0 =C2=A0 border: 1px solid rgba(255,255,255,0.05)=
+;<br>=C2=A0 =C2=A0 =C2=A0 border-radius: 4px;<br>=C2=A0 =C2=A0 =C2=A0 overf=
+low: hidden;<br>=C2=A0 =C2=A0 =C2=A0 transition: transform 0.3s, border-col=
+or 0.3s;<br>=C2=A0 =C2=A0 =C2=A0 position: relative;<br>=C2=A0 =C2=A0 }<br>=
+<br>=C2=A0 =C2=A0 .product-card:hover {<br>=C2=A0 =C2=A0 =C2=A0 transform: =
+translateY(-6px);<br>=C2=A0 =C2=A0 =C2=A0 border-color: rgba(255,214,0,0.3)=
+;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .product-img {<br>=C2=A0 =C2=A0 =
+=C2=A0 width: 100%;<br>=C2=A0 =C2=A0 =C2=A0 height: 260px;<br>=C2=A0 =C2=A0=
+ =C2=A0 background: var(--dark2);<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br=
+>=C2=A0 =C2=A0 =C2=A0 flex-direction: column;<br>=C2=A0 =C2=A0 =C2=A0 align=
+-items: center;<br>=C2=A0 =C2=A0 =C2=A0 justify-content: center;<br>=C2=A0 =
+=C2=A0 =C2=A0 gap: 12px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--gray-dark);<b=
+r>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Rajdhani&#39;, sans-serif;<br>=C2=
+=A0 =C2=A0 =C2=A0 font-size: 12px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: =
+1px;<br>=C2=A0 =C2=A0 =C2=A0 position: relative;<br>=C2=A0 =C2=A0 =C2=A0 ov=
+erflow: hidden;<br>=C2=A0 =C2=A0 =C2=A0 cursor: pointer;<br>=C2=A0 =C2=A0 }=
+<br><br>=C2=A0 =C2=A0 .product-img::before {<br>=C2=A0 =C2=A0 =C2=A0 conten=
+t: &#39;&#39;;<br>=C2=A0 =C2=A0 =C2=A0 position: absolute;<br>=C2=A0 =C2=A0=
+ =C2=A0 inset: 0;<br>=C2=A0 =C2=A0 =C2=A0 background: repeating-linear-grad=
+ient(<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 90deg,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+transparent,<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 transparent 40px,<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 rgba(255,255,255,0.01) 40px,<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 rgba(255,255,255,0.01) 41px<br>=C2=A0 =C2=A0 =C2=A0 );<br>=C2=A0 =C2=A0=
+ }<br><br>=C2=A0 =C2=A0 .product-img i { font-size: 40px; color: rgba(255,2=
+14,0,0.2); }<br><br>=C2=A0 =C2=A0 .product-badge {<br>=C2=A0 =C2=A0 =C2=A0 =
+position: absolute;<br>=C2=A0 =C2=A0 =C2=A0 top: 14px; left: 14px;<br>=C2=
+=A0 =C2=A0 =C2=A0 background: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 color:=
+ var(--black);<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Rajdhani&#39;, san=
+s-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-weight: 700;<br>=C2=A0 =C2=A0 =C2=A0 =
+font-size: 11px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 1px;<br>=C2=A0 =C2=
+=A0 =C2=A0 padding: 4px 10px;<br>=C2=A0 =C2=A0 =C2=A0 text-transform: upper=
+case;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .product-info {<br>=C2=A0 =C2=
+=A0 =C2=A0 padding: 20px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .product-=
+category {<br>=C2=A0 =C2=A0 =C2=A0 font-size: 11px;<br>=C2=A0 =C2=A0 =C2=A0=
+ letter-spacing: 2px;<br>=C2=A0 =C2=A0 =C2=A0 text-transform: uppercase;<br=
+>=C2=A0 =C2=A0 =C2=A0 color: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 font-fa=
+mily: &#39;Rajdhani&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 margin-bottom=
+: 6px;<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 align=
+-items: center;<br>=C2=A0 =C2=A0 =C2=A0 gap: 6px;<br>=C2=A0 =C2=A0 }<br><br=
+>=C2=A0 =C2=A0 .product-name {<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Ra=
+jdhani&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-weight: 700;<br>=C2=
+=A0 =C2=A0 =C2=A0 font-size: 18px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--whi=
+te);<br>=C2=A0 =C2=A0 =C2=A0 margin-bottom: 10px;<br>=C2=A0 =C2=A0 }<br><br=
+>=C2=A0 =C2=A0 .product-price {<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;B=
+ebas Neue&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-size: 28px;<br>=C2=
+=A0 =C2=A0 =C2=A0 color: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 letter-spac=
+ing: 1px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .product-price span {<br>=
+=C2=A0 =C2=A0 =C2=A0 font-size: 14px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--=
+gray-dark);<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Poppins&#39;, sans-se=
+rif;<br>=C2=A0 =C2=A0 =C2=A0 text-decoration: line-through;<br>=C2=A0 =C2=
+=A0 =C2=A0 margin-left: 8px;<br>=C2=A0 =C2=A0 =C2=A0 font-weight: 300;<br>=
+=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .product-btn {<br>=C2=A0 =C2=A0 =C2=A0=
+ margin-top: 14px;<br>=C2=A0 =C2=A0 =C2=A0 width: 100%;<br>=C2=A0 =C2=A0 =
+=C2=A0 padding: 10px;<br>=C2=A0 =C2=A0 =C2=A0 background: transparent;<br>=
+=C2=A0 =C2=A0 =C2=A0 border: 1px solid rgba(255,214,0,0.3);<br>=C2=A0 =C2=
+=A0 =C2=A0 color: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;=
+Rajdhani&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-weight: 700;<br>=C2=
+=A0 =C2=A0 =C2=A0 font-size: 13px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: =
+2px;<br>=C2=A0 =C2=A0 =C2=A0 text-transform: uppercase;<br>=C2=A0 =C2=A0 =
+=C2=A0 cursor: pointer;<br>=C2=A0 =C2=A0 =C2=A0 border-radius: 2px;<br>=C2=
+=A0 =C2=A0 =C2=A0 transition: all 0.3s;<br>=C2=A0 =C2=A0 =C2=A0 display: fl=
+ex;<br>=C2=A0 =C2=A0 =C2=A0 align-items: center;<br>=C2=A0 =C2=A0 =C2=A0 ju=
+stify-content: center;<br>=C2=A0 =C2=A0 =C2=A0 gap: 8px;<br>=C2=A0 =C2=A0 }=
+<br><br>=C2=A0 =C2=A0 .product-btn:hover {<br>=C2=A0 =C2=A0 =C2=A0 backgrou=
+nd: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 color: var(--black);<br>=C2=A0 =
+=C2=A0 }<br><br>=C2=A0 =C2=A0 /* =3D=3D=3D=3D=3D SHOP SECTION =3D=3D=3D=3D=
+=3D */<br>=C2=A0 =C2=A0 #shop {<br>=C2=A0 =C2=A0 =C2=A0 background: var(--d=
+ark);<br>=C2=A0 =C2=A0 =C2=A0 position: relative;<br>=C2=A0 =C2=A0 }<br><br=
+>=C2=A0 =C2=A0 .shop-intro {<br>=C2=A0 =C2=A0 =C2=A0 max-width: 600px;<br>=
+=C2=A0 =C2=A0 =C2=A0 margin-bottom: 60px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =
+=C2=A0 .shop-intro .about-text { margin-top: 14px; }<br><br>=C2=A0 =C2=A0 .=
+shop-gallery {<br>=C2=A0 =C2=A0 =C2=A0 display: grid;<br>=C2=A0 =C2=A0 =C2=
+=A0 grid-template-columns: 2fr 1fr 1fr;<br>=C2=A0 =C2=A0 =C2=A0 grid-templa=
+te-rows: 300px 300px;<br>=C2=A0 =C2=A0 =C2=A0 gap: 16px;<br>=C2=A0 =C2=A0 }=
+<br><br>=C2=A0 =C2=A0 .gallery-item {<br>=C2=A0 =C2=A0 =C2=A0 background: v=
+ar(--dark2);<br>=C2=A0 =C2=A0 =C2=A0 border: 2px dashed rgba(255,214,0,0.15=
+);<br>=C2=A0 =C2=A0 =C2=A0 border-radius: 4px;<br>=C2=A0 =C2=A0 =C2=A0 disp=
+lay: flex;<br>=C2=A0 =C2=A0 =C2=A0 flex-direction: column;<br>=C2=A0 =C2=A0=
+ =C2=A0 align-items: center;<br>=C2=A0 =C2=A0 =C2=A0 justify-content: cente=
+r;<br>=C2=A0 =C2=A0 =C2=A0 gap: 12px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--=
+gray-dark);<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Rajdhani&#39;, sans-s=
+erif;<br>=C2=A0 =C2=A0 =C2=A0 font-size: 12px;<br>=C2=A0 =C2=A0 =C2=A0 lett=
+er-spacing: 1px;<br>=C2=A0 =C2=A0 =C2=A0 cursor: pointer;<br>=C2=A0 =C2=A0 =
+=C2=A0 transition: border-color 0.3s, background 0.3s;<br>=C2=A0 =C2=A0 =C2=
+=A0 overflow: hidden;<br>=C2=A0 =C2=A0 =C2=A0 position: relative;<br>=C2=A0=
+ =C2=A0 }<br><br>=C2=A0 =C2=A0 .gallery-item:hover {<br>=C2=A0 =C2=A0 =C2=
+=A0 border-color: rgba(255,214,0,0.4);<br>=C2=A0 =C2=A0 =C2=A0 background: =
+rgba(255,214,0,0.03);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .gallery-item=
+ i { font-size: 36px; color: rgba(255,214,0,0.25); }<br><br>=C2=A0 =C2=A0 .=
+gallery-item.large { grid-row: 1 / 3; }<br><br>=C2=A0 =C2=A0 .gallery-overl=
+ay {<br>=C2=A0 =C2=A0 =C2=A0 position: absolute;<br>=C2=A0 =C2=A0 =C2=A0 bo=
+ttom: 0; left: 0; right: 0;<br>=C2=A0 =C2=A0 =C2=A0 background: linear-grad=
+ient(to top, rgba(0,0,0,0.7), transparent);<br>=C2=A0 =C2=A0 =C2=A0 padding=
+: 20px;<br>=C2=A0 =C2=A0 =C2=A0 transform: translateY(100%);<br>=C2=A0 =C2=
+=A0 =C2=A0 transition: transform 0.3s;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=
+=A0 .gallery-item:hover .gallery-overlay { transform: translateY(0); }<br><=
+br>=C2=A0 =C2=A0 .gallery-overlay span {<br>=C2=A0 =C2=A0 =C2=A0 font-famil=
+y: &#39;Rajdhani&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-size: 14px;=
+<br>=C2=A0 =C2=A0 =C2=A0 font-weight: 600;<br>=C2=A0 =C2=A0 =C2=A0 letter-s=
+pacing: 1px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--yellow);<br>=C2=A0 =C2=A0=
+ }<br><br>=C2=A0 =C2=A0 /* =3D=3D=3D=3D=3D CONTACT SECTION =3D=3D=3D=3D=3D =
+*/<br>=C2=A0 =C2=A0 #contact {<br>=C2=A0 =C2=A0 =C2=A0 background: var(--bl=
+ack);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .contact-grid {<br>=C2=A0 =C2=
+=A0 =C2=A0 display: grid;<br>=C2=A0 =C2=A0 =C2=A0 grid-template-columns: 1f=
+r 1fr;<br>=C2=A0 =C2=A0 =C2=A0 gap: 80px;<br>=C2=A0 =C2=A0 =C2=A0 margin-to=
+p: 50px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .contact-item {<br>=C2=A0 =
+=C2=A0 =C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 gap: 18px;<br>=C2=A0 =
+=C2=A0 =C2=A0 align-items: flex-start;<br>=C2=A0 =C2=A0 =C2=A0 margin-botto=
+m: 32px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .contact-icon {<br>=C2=A0 =
+=C2=A0 =C2=A0 width: 46px; height: 46px;<br>=C2=A0 =C2=A0 =C2=A0 background=
+: rgba(255,214,0,0.1);<br>=C2=A0 =C2=A0 =C2=A0 border: 1px solid rgba(255,2=
+14,0,0.2);<br>=C2=A0 =C2=A0 =C2=A0 border-radius: 2px;<br>=C2=A0 =C2=A0 =C2=
+=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 align-items: center;<br>=C2=A0 =
+=C2=A0 =C2=A0 justify-content: center;<br>=C2=A0 =C2=A0 =C2=A0 flex-shrink:=
+ 0;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 f=
+ont-size: 18px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .contact-detail h4 =
+{<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Rajdhani&#39;, sans-serif;<br>=
+=C2=A0 =C2=A0 =C2=A0 font-weight: 700;<br>=C2=A0 =C2=A0 =C2=A0 font-size: 1=
+6px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 1px;<br>=C2=A0 =C2=A0 =C2=A0 c=
+olor: var(--white);<br>=C2=A0 =C2=A0 =C2=A0 margin-bottom: 4px;<br>=C2=A0 =
+=C2=A0 }<br><br>=C2=A0 =C2=A0 .contact-detail p, .contact-detail a {<br>=C2=
+=A0 =C2=A0 =C2=A0 font-size: 14px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--gra=
+y-dark);<br>=C2=A0 =C2=A0 =C2=A0 text-decoration: none;<br>=C2=A0 =C2=A0 =
+=C2=A0 transition: color 0.3s;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .con=
+tact-detail a:hover { color: var(--yellow); }<br><br>=C2=A0 =C2=A0 .contact=
+-form {<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 flex=
+-direction: column;<br>=C2=A0 =C2=A0 =C2=A0 gap: 16px;<br>=C2=A0 =C2=A0 }<b=
+r><br>=C2=A0 =C2=A0 .form-group {<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br=
+>=C2=A0 =C2=A0 =C2=A0 flex-direction: column;<br>=C2=A0 =C2=A0 =C2=A0 gap: =
+6px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .form-group label {<br>=C2=A0 =
+=C2=A0 =C2=A0 font-family: &#39;Rajdhani&#39;, sans-serif;<br>=C2=A0 =C2=A0=
+ =C2=A0 font-size: 12px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 2px;<br>=
+=C2=A0 =C2=A0 =C2=A0 text-transform: uppercase;<br>=C2=A0 =C2=A0 =C2=A0 col=
+or: var(--gray-dark);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .form-group i=
+nput,<br>=C2=A0 =C2=A0 .form-group textarea {<br>=C2=A0 =C2=A0 =C2=A0 backg=
+round: var(--dark);<br>=C2=A0 =C2=A0 =C2=A0 border: 1px solid rgba(255,255,=
+255,0.08);<br>=C2=A0 =C2=A0 =C2=A0 border-radius: 2px;<br>=C2=A0 =C2=A0 =C2=
+=A0 padding: 12px 16px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--white);<br>=C2=
+=A0 =C2=A0 =C2=A0 font-family: &#39;Poppins&#39;, sans-serif;<br>=C2=A0 =C2=
+=A0 =C2=A0 font-size: 14px;<br>=C2=A0 =C2=A0 =C2=A0 outline: none;<br>=C2=
+=A0 =C2=A0 =C2=A0 transition: border-color 0.3s;<br>=C2=A0 =C2=A0 =C2=A0 re=
+size: none;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .form-group input:focus=
+,<br>=C2=A0 =C2=A0 .form-group textarea:focus {<br>=C2=A0 =C2=A0 =C2=A0 bor=
+der-color: rgba(255,214,0,0.4);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .fo=
+rm-group textarea { height: 120px; }<br><br>=C2=A0 =C2=A0 .form-submit {<br=
+>=C2=A0 =C2=A0 =C2=A0 background: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 co=
+lor: var(--black);<br>=C2=A0 =C2=A0 =C2=A0 border: none;<br>=C2=A0 =C2=A0 =
+=C2=A0 padding: 14px 32px;<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Rajdha=
+ni&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-weight: 700;<br>=C2=A0 =
+=C2=A0 =C2=A0 font-size: 15px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 3px;=
+<br>=C2=A0 =C2=A0 =C2=A0 text-transform: uppercase;<br>=C2=A0 =C2=A0 =C2=A0=
+ cursor: pointer;<br>=C2=A0 =C2=A0 =C2=A0 border-radius: 2px;<br>=C2=A0 =C2=
+=A0 =C2=A0 transition: background 0.3s, transform 0.2s;<br>=C2=A0 =C2=A0 =
+=C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 align-items: center;<br>=C2=
+=A0 =C2=A0 =C2=A0 gap: 10px;<br>=C2=A0 =C2=A0 =C2=A0 align-self: flex-start=
+;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .form-submit:hover {<br>=C2=A0 =
+=C2=A0 =C2=A0 background: var(--yellow-light);<br>=C2=A0 =C2=A0 =C2=A0 tran=
+sform: translateY(-2px);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 /* =3D=3D=
+=3D=3D=3D WAVE FOOTER =3D=3D=3D=3D=3D */<br>=C2=A0 =C2=A0 footer {<br>=C2=
+=A0 =C2=A0 =C2=A0 background: var(--dark);<br>=C2=A0 =C2=A0 =C2=A0 position=
+: relative;<br>=C2=A0 =C2=A0 =C2=A0 overflow: hidden;<br>=C2=A0 =C2=A0 }<br=
+><br>=C2=A0 =C2=A0 .footer-wave {<br>=C2=A0 =C2=A0 =C2=A0 display: block;<b=
+r>=C2=A0 =C2=A0 =C2=A0 width: 100%;<br>=C2=A0 =C2=A0 =C2=A0 line-height: 0;=
+<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .footer-wave svg { display: block;=
+ width: 100%; }<br><br>=C2=A0 =C2=A0 .footer-body {<br>=C2=A0 =C2=A0 =C2=A0=
+ padding: 60px 60px 40px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .footer-g=
+rid {<br>=C2=A0 =C2=A0 =C2=A0 display: grid;<br>=C2=A0 =C2=A0 =C2=A0 grid-t=
+emplate-columns: 2fr 1fr 1fr 1fr;<br>=C2=A0 =C2=A0 =C2=A0 gap: 48px;<br>=C2=
+=A0 =C2=A0 =C2=A0 margin-bottom: 50px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=
+=A0 .footer-brand .brand-name {<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;B=
+ebas Neue&#39;, sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-size: 36px;<br>=C2=
+=A0 =C2=A0 =C2=A0 color: var(--yellow);<br>=C2=A0 =C2=A0 =C2=A0 letter-spac=
+ing: 3px;<br>=C2=A0 =C2=A0 =C2=A0 margin-bottom: 14px;<br>=C2=A0 =C2=A0 =C2=
+=A0 display: block;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .footer-brand p=
+ {<br>=C2=A0 =C2=A0 =C2=A0 font-size: 14px;<br>=C2=A0 =C2=A0 =C2=A0 line-he=
+ight: 1.8;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--gray-dark);<br>=C2=A0 =C2=
+=A0 =C2=A0 max-width: 280px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .foote=
+r-socials {<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 =
+gap: 12px;<br>=C2=A0 =C2=A0 =C2=A0 margin-top: 24px;<br>=C2=A0 =C2=A0 }<br>=
+<br>=C2=A0 =C2=A0 .social-link {<br>=C2=A0 =C2=A0 =C2=A0 width: 38px; heigh=
+t: 38px;<br>=C2=A0 =C2=A0 =C2=A0 background: rgba(255,255,255,0.05);<br>=C2=
+=A0 =C2=A0 =C2=A0 border: 1px solid rgba(255,255,255,0.08);<br>=C2=A0 =C2=
+=A0 =C2=A0 border-radius: 2px;<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=
+=C2=A0 =C2=A0 =C2=A0 align-items: center;<br>=C2=A0 =C2=A0 =C2=A0 justify-c=
+ontent: center;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--gray-dark);<br>=C2=A0 =
+=C2=A0 =C2=A0 text-decoration: none;<br>=C2=A0 =C2=A0 =C2=A0 font-size: 15p=
+x;<br>=C2=A0 =C2=A0 =C2=A0 transition: all 0.3s;<br>=C2=A0 =C2=A0 }<br><br>=
+=C2=A0 =C2=A0 .social-link:hover {<br>=C2=A0 =C2=A0 =C2=A0 background: var(=
+--yellow);<br>=C2=A0 =C2=A0 =C2=A0 color: var(--black);<br>=C2=A0 =C2=A0 =
+=C2=A0 border-color: var(--yellow);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0=
+ .footer-col h5 {<br>=C2=A0 =C2=A0 =C2=A0 font-family: &#39;Rajdhani&#39;, =
+sans-serif;<br>=C2=A0 =C2=A0 =C2=A0 font-weight: 700;<br>=C2=A0 =C2=A0 =C2=
+=A0 font-size: 14px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 3px;<br>=C2=A0=
+ =C2=A0 =C2=A0 text-transform: uppercase;<br>=C2=A0 =C2=A0 =C2=A0 color: va=
+r(--white);<br>=C2=A0 =C2=A0 =C2=A0 margin-bottom: 20px;<br>=C2=A0 =C2=A0 =
+=C2=A0 padding-bottom: 10px;<br>=C2=A0 =C2=A0 =C2=A0 border-bottom: 1px sol=
+id rgba(255,214,0,0.2);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .footer-lin=
+ks {<br>=C2=A0 =C2=A0 =C2=A0 list-style: none;<br>=C2=A0 =C2=A0 =C2=A0 disp=
+lay: flex;<br>=C2=A0 =C2=A0 =C2=A0 flex-direction: column;<br>=C2=A0 =C2=A0=
+ =C2=A0 gap: 10px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .footer-links a =
+{<br>=C2=A0 =C2=A0 =C2=A0 color: var(--gray-dark);<br>=C2=A0 =C2=A0 =C2=A0 =
+text-decoration: none;<br>=C2=A0 =C2=A0 =C2=A0 font-size: 14px;<br>=C2=A0 =
+=C2=A0 =C2=A0 transition: color 0.3s;<br>=C2=A0 =C2=A0 =C2=A0 display: flex=
+;<br>=C2=A0 =C2=A0 =C2=A0 align-items: center;<br>=C2=A0 =C2=A0 =C2=A0 gap:=
+ 8px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .footer-links a i { font-size=
+: 11px; color: var(--yellow); }<br>=C2=A0 =C2=A0 .footer-links a:hover { co=
+lor: var(--yellow); }<br><br>=C2=A0 =C2=A0 .footer-bottom {<br>=C2=A0 =C2=
+=A0 =C2=A0 border-top: 1px solid rgba(255,255,255,0.06);<br>=C2=A0 =C2=A0 =
+=C2=A0 padding-top: 28px;<br>=C2=A0 =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =
+=C2=A0 =C2=A0 align-items: center;<br>=C2=A0 =C2=A0 =C2=A0 justify-content:=
+ space-between;<br>=C2=A0 =C2=A0 =C2=A0 flex-wrap: wrap;<br>=C2=A0 =C2=A0 =
+=C2=A0 gap: 16px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .footer-copy {<br=
+>=C2=A0 =C2=A0 =C2=A0 font-size: 13px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(-=
+-gray-dark);<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .footer-copy span { co=
+lor: var(--yellow); }<br><br>=C2=A0 =C2=A0 .footer-bottom-links {<br>=C2=A0=
+ =C2=A0 =C2=A0 display: flex;<br>=C2=A0 =C2=A0 =C2=A0 gap: 24px;<br>=C2=A0 =
+=C2=A0 }<br><br>=C2=A0 =C2=A0 .footer-bottom-links a {<br>=C2=A0 =C2=A0 =C2=
+=A0 font-size: 12px;<br>=C2=A0 =C2=A0 =C2=A0 color: var(--gray-dark);<br>=
+=C2=A0 =C2=A0 =C2=A0 text-decoration: none;<br>=C2=A0 =C2=A0 =C2=A0 letter-=
+spacing: 1px;<br>=C2=A0 =C2=A0 =C2=A0 transition: color 0.3s;<br>=C2=A0 =C2=
+=A0 }<br><br>=C2=A0 =C2=A0 .footer-bottom-links a:hover { color: var(--yell=
+ow); }<br><br>=C2=A0 =C2=A0 /* =3D=3D=3D=3D=3D TICKER STRIP =3D=3D=3D=3D=3D=
+ */<br>=C2=A0 =C2=A0 .ticker {<br>=C2=A0 =C2=A0 =C2=A0 background: var(--ye=
+llow);<br>=C2=A0 =C2=A0 =C2=A0 padding: 12px 0;<br>=C2=A0 =C2=A0 =C2=A0 ove=
+rflow: hidden;<br>=C2=A0 =C2=A0 =C2=A0 white-space: nowrap;<br>=C2=A0 =C2=
+=A0 }<br><br>=C2=A0 =C2=A0 .ticker-inner {<br>=C2=A0 =C2=A0 =C2=A0 display:=
+ inline-block;<br>=C2=A0 =C2=A0 =C2=A0 animation: ticker 20s linear infinit=
+e;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .ticker-inner span {<br>=C2=A0 =
+=C2=A0 =C2=A0 font-family: &#39;Bebas Neue&#39;, sans-serif;<br>=C2=A0 =C2=
+=A0 =C2=A0 font-size: 16px;<br>=C2=A0 =C2=A0 =C2=A0 letter-spacing: 3px;<br=
+>=C2=A0 =C2=A0 =C2=A0 color: var(--black);<br>=C2=A0 =C2=A0 =C2=A0 margin: =
+0 32px;<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 .ticker-inner span i { marg=
+in-right: 8px; }<br><br>=C2=A0 =C2=A0 @keyframes ticker {<br>=C2=A0 =C2=A0 =
+=C2=A0 from { transform: translateX(0); }<br>=C2=A0 =C2=A0 =C2=A0 to { tran=
+sform: translateX(-50%); }<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 /* =3D=
+=3D=3D=3D=3D RESPONSIVE =3D=3D=3D=3D=3D */<br>=C2=A0 =C2=A0 @media (max-wid=
+th: 1024px) {<br>=C2=A0 =C2=A0 =C2=A0 nav { padding: 16px 30px; }<br>=C2=A0=
+ =C2=A0 =C2=A0 section { padding: 80px 30px; }<br>=C2=A0 =C2=A0 =C2=A0 .abo=
+ut-inner { grid-template-columns: 1fr; gap: 50px; }<br>=C2=A0 =C2=A0 =C2=A0=
+ .products-grid { grid-template-columns: repeat(2, 1fr); }<br>=C2=A0 =C2=A0=
+ =C2=A0 .shop-gallery {<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 grid-template-column=
+s: 1fr 1fr;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 grid-template-rows: auto;<br>=C2=
+=A0 =C2=A0 =C2=A0 }<br>=C2=A0 =C2=A0 =C2=A0 .gallery-item.large { grid-row:=
+ auto; }<br>=C2=A0 =C2=A0 =C2=A0 .contact-grid { grid-template-columns: 1fr=
+; gap: 50px; }<br>=C2=A0 =C2=A0 =C2=A0 .footer-grid { grid-template-columns=
+: 1fr 1fr; }<br>=C2=A0 =C2=A0 =C2=A0 .footer-body { padding: 50px 30px 30px=
+; }<br>=C2=A0 =C2=A0 }<br><br>=C2=A0 =C2=A0 @media (max-width: 768px) {<br>=
+=C2=A0 =C2=A0 =C2=A0 nav { padding: 14px 20px; }<br>=C2=A0 =C2=A0 =C2=A0 .n=
+av-links { display: none; }<br>=C2=A0 =C2=A0 =C2=A0 section { padding: 70px=
+ 20px; }<br>=C2=A0 =C2=A0 =C2=A0 .products-grid { grid-template-columns: 1f=
+r; }<br>=C2=A0 =C2=A0 =C2=A0 .shop-gallery { grid-template-columns: 1fr; }<=
+br>=C2=A0 =C2=A0 =C2=A0 .footer-grid { grid-template-columns: 1fr; gap: 30p=
+x; }<br>=C2=A0 =C2=A0 =C2=A0 .footer-bottom { flex-direction: column; text-=
+align: center; }<br>=C2=A0 =C2=A0 }<br>=C2=A0 &lt;/style&gt;<br>&lt;/head&g=
+t;<br><br>&lt;body&gt;<br><br>=C2=A0 &lt;!-- =3D=3D=3D=3D=3D NAVBAR =3D=3D=
+=3D=3D=3D --&gt;<br>=C2=A0 &lt;nav&gt;<br>=C2=A0 =C2=A0 &lt;a href=3D&quot;=
+#home&quot; class=3D&quot;nav-logo&quot;&gt;THE 499 STORE&lt;/a&gt;<br>=C2=
+=A0 =C2=A0 &lt;ul class=3D&quot;nav-links&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0=
+ &lt;li&gt;&lt;a href=3D&quot;#home&quot;&gt;&lt;i class=3D&quot;fa-solid f=
+a-house&quot;&gt;&lt;/i&gt;Home&lt;/a&gt;&lt;/li&gt;<br>=C2=A0 =C2=A0 =C2=
+=A0 &lt;li&gt;&lt;a href=3D&quot;#about&quot;&gt;&lt;i class=3D&quot;fa-sol=
+id fa-circle-info&quot;&gt;&lt;/i&gt;About&lt;/a&gt;&lt;/li&gt;<br>=C2=A0 =
+=C2=A0 =C2=A0 &lt;li&gt;&lt;a href=3D&quot;#products&quot;&gt;&lt;i class=
+=3D&quot;fa-solid fa-shirt&quot;&gt;&lt;/i&gt;Products&lt;/a&gt;&lt;/li&gt;=
+<br>=C2=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a href=3D&quot;#shop&quot;&gt;&lt;i =
+class=3D&quot;fa-solid fa-store&quot;&gt;&lt;/i&gt;Shop&lt;/a&gt;&lt;/li&gt=
+;<br>=C2=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a href=3D&quot;#contact&quot;&gt;&l=
+t;i class=3D&quot;fa-solid fa-phone&quot;&gt;&lt;/i&gt;Contact&lt;/a&gt;&lt=
+;/li&gt;<br>=C2=A0 =C2=A0 &lt;/ul&gt;<br>=C2=A0 =C2=A0 &lt;a href=3D&quot;#=
+contact&quot; class=3D&quot;nav-cta&quot;&gt;&lt;i class=3D&quot;fa-solid f=
+a-bolt&quot;&gt;&lt;/i&gt; &amp;nbsp;Visit Us&lt;/a&gt;<br>=C2=A0 &lt;/nav&=
+gt;<br><br>=C2=A0 &lt;!-- =3D=3D=3D=3D=3D TICKER =3D=3D=3D=3D=3D --&gt;<br>=
+=C2=A0 &lt;div style=3D&quot;margin-top:72px;&quot; class=3D&quot;ticker&qu=
+ot;&gt;<br>=C2=A0 =C2=A0 &lt;div class=3D&quot;ticker-inner&quot;&gt;<br>=
+=C2=A0 =C2=A0 =C2=A0 &lt;span&gt;&lt;i class=3D&quot;fa-solid fa-star&quot;=
+&gt;&lt;/i&gt;CLOTHES&lt;/span&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;span&gt;&lt;=
+i class=3D&quot;fa-solid fa-shoe-prints&quot;&gt;&lt;/i&gt;SHOES&lt;/span&g=
+t;<br>=C2=A0 =C2=A0 =C2=A0 &lt;span&gt;&lt;i class=3D&quot;fa-solid fa-cloc=
+k&quot;&gt;&lt;/i&gt;WATCHES&lt;/span&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;span&=
+gt;&lt;i class=3D&quot;fa-solid fa-tag&quot;&gt;&lt;/i&gt;STARTING FROM =E2=
+=82=B9499&lt;/span&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;span&gt;&lt;i class=3D&q=
+uot;fa-solid fa-fire&quot;&gt;&lt;/i&gt;NEW ARRIVALS&lt;/span&gt;<br>=C2=A0=
+ =C2=A0 =C2=A0 &lt;span&gt;&lt;i class=3D&quot;fa-solid fa-truck&quot;&gt;&=
+lt;/i&gt;VISIT IN STORE&lt;/span&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;span&gt;&l=
+t;i class=3D&quot;fa-solid fa-star&quot;&gt;&lt;/i&gt;CLOTHES&lt;/span&gt;<=
+br>=C2=A0 =C2=A0 =C2=A0 &lt;span&gt;&lt;i class=3D&quot;fa-solid fa-shoe-pr=
+ints&quot;&gt;&lt;/i&gt;SHOES&lt;/span&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;span=
+&gt;&lt;i class=3D&quot;fa-solid fa-clock&quot;&gt;&lt;/i&gt;WATCHES&lt;/sp=
+an&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;span&gt;&lt;i class=3D&quot;fa-solid fa-=
+tag&quot;&gt;&lt;/i&gt;STARTING FROM =E2=82=B9499&lt;/span&gt;<br>=C2=A0 =
+=C2=A0 =C2=A0 &lt;span&gt;&lt;i class=3D&quot;fa-solid fa-fire&quot;&gt;&lt=
+;/i&gt;NEW ARRIVALS&lt;/span&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;span&gt;&lt;i =
+class=3D&quot;fa-solid fa-truck&quot;&gt;&lt;/i&gt;VISIT IN STORE&lt;/span&=
+gt;<br>=C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 &lt;/div&gt;<br><br>=C2=A0 &lt;=
+!-- =3D=3D=3D=3D=3D HERO SECTION =3D=3D=3D=3D=3D --&gt;<br>=C2=A0 &lt;secti=
+on id=3D&quot;home&quot;&gt;<br>=C2=A0 =C2=A0 &lt;div class=3D&quot;hero-ta=
+g&quot;&gt;&lt;i class=3D&quot;fa-solid fa-bolt&quot;&gt;&lt;/i&gt; &amp;nb=
+sp; Style. Quality. Value.&lt;/div&gt;<br>=C2=A0 =C2=A0 &lt;h1 class=3D&quo=
+t;hero-title&quot;&gt;THE 499&lt;br&gt;STORE&lt;/h1&gt;<br>=C2=A0 =C2=A0 &l=
+t;p class=3D&quot;hero-subtitle&quot;&gt;Clothes &amp;nbsp;|&amp;nbsp; Shoe=
+s &amp;nbsp;|&amp;nbsp; Watches&lt;/p&gt;<br>=C2=A0 =C2=A0 &lt;p class=3D&q=
+uot;hero-desc&quot;&gt;Fashion that doesn&#39;t break the bank. Discover th=
+e latest trends in clothing, footwear &amp; timepieces =E2=80=94 all starti=
+ng at just =E2=82=B9499.&lt;/p&gt;<br>=C2=A0 =C2=A0 &lt;div class=3D&quot;h=
+ero-badges&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;hero-bad=
+ge&quot;&gt;&lt;i class=3D&quot;fa-solid fa-shirt&quot;&gt;&lt;/i&gt; Trend=
+y Clothes&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;hero-ba=
+dge&quot;&gt;&lt;i class=3D&quot;fa-solid fa-shoe-prints&quot;&gt;&lt;/i&gt=
+; Premium Shoes&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;h=
+ero-badge&quot;&gt;&lt;i class=3D&quot;fa-solid fa-clock&quot;&gt;&lt;/i&gt=
+; Stylish Watches&lt;/div&gt;<br>=C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=
+=A0 &lt;div class=3D&quot;hero-scroll&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt=
+;i class=3D&quot;fa-solid fa-chevron-down&quot;&gt;&lt;/i&gt;<br>=C2=A0 =C2=
+=A0 =C2=A0 &lt;span&gt;Scroll&lt;/span&gt;<br>=C2=A0 =C2=A0 &lt;/div&gt;<br=
+>=C2=A0 &lt;/section&gt;<br><br>=C2=A0 &lt;!-- =3D=3D=3D=3D=3D ABOUT US SEC=
+TION =3D=3D=3D=3D=3D --&gt;<br>=C2=A0 &lt;section id=3D&quot;about&quot;&gt=
+;<br>=C2=A0 =C2=A0 &lt;div class=3D&quot;about-inner&quot;&gt;<br>=C2=A0 =
+=C2=A0 =C2=A0 &lt;div class=3D&quot;about-left&quot;&gt;<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &lt;div class=3D&quot;section-label&quot;&gt;&lt;i class=3D&q=
+uot;fa-solid fa-circle-info&quot;&gt;&lt;/i&gt; About Us&lt;/div&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 &lt;h2 class=3D&quot;section-title&quot;&gt;We Are=
+ &lt;span&gt;THE 499&lt;/span&gt;&lt;br&gt;STORE&lt;/h2&gt;<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &lt;p class=3D&quot;about-text&quot;&gt;THE 499 STORE is =
+your one-stop destination for affordable yet stylish fashion. From the late=
+st trends in clothing to comfortable footwear and premium-look watches, we =
+bring quality to every price point.&lt;/p&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &lt;p class=3D&quot;about-text&quot;&gt;Our mission is simple =E2=80=94=
+ help you look your best without spending a fortune. Founded with a passion=
+ for fashion and accessibility, we serve thousands of satisfied customers a=
+cross multiple locations.&lt;/p&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;=
+div class=3D&quot;owner-card&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &lt;div class=3D&quot;owner-icon&quot;&gt;&lt;i class=3D&quot;fa-solid =
+fa-user-tie&quot;&gt;&lt;/i&gt;&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &lt;div class=3D&quot;owner-info&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &lt;h4&gt;Owner Name Here&lt;/h4&gt;<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;p&gt;&lt;i class=3D&quot;fa-solid fa-pen&qu=
+ot;&gt;&lt;/i&gt; &amp;nbsp; Founder &amp; Owner &amp;nbsp;=C2=B7&amp;nbsp;=
+ THE 499 STORE&lt;/p&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;=
+<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &lt;div class=3D&quot;stats-row&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &lt;div class=3D&quot;stat-item&quot;&gt;<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;stat-num&quot;&gt;3+&lt;/=
+div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;=
+stat-label&quot;&gt;&lt;i class=3D&quot;fa-solid fa-store&quot;&gt;&lt;/i&g=
+t; Branches&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<=
+br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;stat-item&quot;=
+&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;sta=
+t-num&quot;&gt;5K+&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ &lt;div class=3D&quot;stat-label&quot;&gt;&lt;i class=3D&quot;fa-solid fa-=
+users&quot;&gt;&lt;/i&gt; Customers&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=
+=3D&quot;stat-item&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &=
+lt;div class=3D&quot;stat-num&quot;&gt;499&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;stat-label&quot;&gt;&lt;i cl=
+ass=3D&quot;fa-solid fa-tag&quot;&gt;&lt;/i&gt; From (=E2=82=B9)&lt;/div&gt=
+;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =
+=C2=A0 =C2=A0 &lt;div class=3D&quot;about-right&quot;&gt;<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &lt;div class=3D&quot;branches-title&quot;&gt;&lt;i class=3D&=
+quot;fa-solid fa-location-dot&quot;&gt;&lt;/i&gt; Our Branches&lt;/div&gt;<=
+br><br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;branch-card&quot;&=
+gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;h4&gt;&lt;i class=3D&quot;fa-=
+solid fa-store&quot; style=3D&quot;color:var(--yellow);margin-right:8px;&qu=
+ot;&gt;&lt;/i&gt;Branch 1 =E2=80=94 Main Outlet&lt;/h4&gt;<br>=C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 &lt;p&gt;&lt;i class=3D&quot;fa-solid fa-map-pin&quot=
+;&gt;&lt;/i&gt; Location Name Here =E2=80=94 City, State&lt;/p&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;di=
+v class=3D&quot;branch-card&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ &lt;h4&gt;&lt;i class=3D&quot;fa-solid fa-store&quot; style=3D&quot;color:=
+var(--yellow);margin-right:8px;&quot;&gt;&lt;/i&gt;Branch 2 =E2=80=94 City =
+Centre&lt;/h4&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;p&gt;&lt;i clas=
+s=3D&quot;fa-solid fa-map-pin&quot;&gt;&lt;/i&gt; Location Name Here =E2=80=
+=94 City, State&lt;/p&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;branch-card&quot;&gt;<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;h4&gt;&lt;i class=3D&quot;fa-solid f=
+a-store&quot; style=3D&quot;color:var(--yellow);margin-right:8px;&quot;&gt;=
+&lt;/i&gt;Branch 3 =E2=80=94 Market Hub&lt;/h4&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &lt;p&gt;&lt;i class=3D&quot;fa-solid fa-map-pin&quot;&gt;&lt=
+;/i&gt; Location Name Here =E2=80=94 City, State&lt;/p&gt;<br>=C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;!-- Phot=
+o placeholder --&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;p=
+hoto-placeholder&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;i clas=
+s=3D&quot;fa-solid fa-camera&quot;&gt;&lt;/i&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &lt;span&gt;Add Your Branch Photo Here&lt;/span&gt;<br>=C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=
+=C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 &lt;/section&gt;<br><br>=C2=A0 &lt;!--=
+ =3D=3D=3D=3D=3D PRODUCTS SECTION =3D=3D=3D=3D=3D --&gt;<br>=C2=A0 &lt;sect=
+ion id=3D&quot;products&quot;&gt;<br>=C2=A0 =C2=A0 &lt;div class=3D&quot;pr=
+oducts-header&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div&gt;<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;section-label&quot;&gt;&lt;i class=
+=3D&quot;fa-solid fa-shirt&quot;&gt;&lt;/i&gt; Our Collection&lt;/div&gt;<b=
+r>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;h2 class=3D&quot;section-title&quot;&gt;O=
+ur &lt;span&gt;Products&lt;/span&gt;&lt;/h2&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt=
+;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;products-filter&quo=
+t;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;button class=3D&quot;filter-btn a=
+ctive&quot;&gt;&lt;i class=3D&quot;fa-solid fa-border-all&quot;&gt;&lt;/i&g=
+t; All&lt;/button&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;button class=3D&qu=
+ot;filter-btn&quot;&gt;&lt;i class=3D&quot;fa-solid fa-shirt&quot;&gt;&lt;/=
+i&gt; Clothes&lt;/button&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;button clas=
+s=3D&quot;filter-btn&quot;&gt;&lt;i class=3D&quot;fa-solid fa-shoe-prints&q=
+uot;&gt;&lt;/i&gt; Shoes&lt;/button&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;=
+button class=3D&quot;filter-btn&quot;&gt;&lt;i class=3D&quot;fa-solid fa-cl=
+ock&quot;&gt;&lt;/i&gt; Watches&lt;/button&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;=
+/div&gt;<br>=C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=A0 &lt;div class=
+=3D&quot;products-grid&quot;&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 &lt;!-- Produc=
+t 1 --&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-card&quot;=
+&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-img&quot;=
+&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-ba=
+dge&quot;&gt;New Arrival&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+&lt;i class=3D&quot;fa-solid fa-shirt&quot;&gt;&lt;/i&gt;<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &lt;span&gt;Add Product Photo&lt;/span&gt;<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div cl=
+ass=3D&quot;product-info&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &l=
+t;div class=3D&quot;product-category&quot;&gt;&lt;i class=3D&quot;fa-solid =
+fa-shirt&quot;&gt;&lt;/i&gt; Clothing&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &lt;div class=3D&quot;product-name&quot;&gt;Stylish Casual Sh=
+irt&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot=
+;product-price&quot;&gt;=E2=82=B9499 &lt;span&gt;=E2=82=B9999&lt;/span&gt;&=
+lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;button class=3D&quot;=
+product-btn&quot;&gt;&lt;i class=3D&quot;fa-solid fa-eye&quot;&gt;&lt;/i&gt=
+; View Product&lt;/button&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<b=
+r>=C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 &lt;!-- Pro=
+duct 2 --&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-card&qu=
+ot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-img&qu=
+ot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product=
+-badge&quot;&gt;Bestseller&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &lt;i class=3D&quot;fa-solid fa-shoe-prints&quot;&gt;&lt;/i&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;span&gt;Add Product Photo&lt;/span&gt;<=
+br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+&lt;div class=3D&quot;product-info&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 &lt;div class=3D&quot;product-category&quot;&gt;&lt;i class=3D&quot=
+;fa-solid fa-shoe-prints&quot;&gt;&lt;/i&gt; Footwear&lt;/div&gt;<br>=C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-name&quot;&gt;Pr=
+emium Sneakers&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div cl=
+ass=3D&quot;product-price&quot;&gt;=E2=82=B9499 &lt;span&gt;=E2=82=B91,299&=
+lt;/span&gt;&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;button c=
+lass=3D&quot;product-btn&quot;&gt;&lt;i class=3D&quot;fa-solid fa-eye&quot;=
+&gt;&lt;/i&gt; View Product&lt;/button&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &=
+lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=A0 =C2=
+=A0 &lt;!-- Product 3 --&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;=
+product-card&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot=
+;product-img&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=
+=3D&quot;product-badge&quot;&gt;Hot Deal&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &lt;i class=3D&quot;fa-solid fa-clock&quot;&gt;&lt;/i&gt;=
+<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;span&gt;Add Product Photo&lt;/sp=
+an&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &lt;div class=3D&quot;product-info&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 &lt;div class=3D&quot;product-category&quot;&gt;&lt;i class=
+=3D&quot;fa-solid fa-clock&quot;&gt;&lt;/i&gt; Watches&lt;/div&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-name&quot;&gt=
+;Classic Analog Watch&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt=
+;div class=3D&quot;product-price&quot;&gt;=E2=82=B9499 &lt;span&gt;=E2=82=
+=B91,599&lt;/span&gt;&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt=
+;button class=3D&quot;product-btn&quot;&gt;&lt;i class=3D&quot;fa-solid fa-=
+eye&quot;&gt;&lt;/i&gt; View Product&lt;/button&gt;<br>=C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=
+=A0 =C2=A0 &lt;!-- Product 4 --&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=
+=3D&quot;product-card&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div clas=
+s=3D&quot;product-img&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;i=
+ class=3D&quot;fa-solid fa-vest&quot;&gt;&lt;/i&gt;<br>=C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 &lt;span&gt;Add Product Photo&lt;/span&gt;<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&=
+quot;product-info&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div c=
+lass=3D&quot;product-category&quot;&gt;&lt;i class=3D&quot;fa-solid fa-shir=
+t&quot;&gt;&lt;/i&gt; Clothing&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &lt;div class=3D&quot;product-name&quot;&gt;Formal Trousers&lt;/div&=
+gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-pri=
+ce&quot;&gt;=E2=82=B9499 &lt;span&gt;=E2=82=B9899&lt;/span&gt;&lt;/div&gt;<=
+br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;button class=3D&quot;product-btn&=
+quot;&gt;&lt;i class=3D&quot;fa-solid fa-eye&quot;&gt;&lt;/i&gt; View Produ=
+ct&lt;/button&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=
+=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 &lt;!-- Product 5 --&gt=
+;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-card&quot;&gt;<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-img&quot;&gt;<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-badge&quot=
+;&gt;New&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;i class=3D&q=
+uot;fa-solid fa-shoe-prints&quot;&gt;&lt;/i&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &lt;span&gt;Add Product Photo&lt;/span&gt;<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quo=
+t;product-info&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div clas=
+s=3D&quot;product-category&quot;&gt;&lt;i class=3D&quot;fa-solid fa-shoe-pr=
+ints&quot;&gt;&lt;/i&gt; Footwear&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &lt;div class=3D&quot;product-name&quot;&gt;Leather Loafers&lt;/=
+div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product=
+-price&quot;&gt;=E2=82=B9499 &lt;span&gt;=E2=82=B91,199&lt;/span&gt;&lt;/di=
+v&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;button class=3D&quot;produc=
+t-btn&quot;&gt;&lt;i class=3D&quot;fa-solid fa-eye&quot;&gt;&lt;/i&gt; View=
+ Product&lt;/button&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 &lt;!-- Product =
+6 --&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-card&quot;&g=
+t;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-img&quot;&g=
+t;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;i class=3D&quot;fa-solid fa-cl=
+ock&quot;&gt;&lt;/i&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;span&gt;A=
+dd Product Photo&lt;/span&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<b=
+r>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-info&quot;&gt;<=
+br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-categor=
+y&quot;&gt;&lt;i class=3D&quot;fa-solid fa-clock&quot;&gt;&lt;/i&gt; Watche=
+s&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;p=
+roduct-name&quot;&gt;Sports Digital Watch&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;product-price&quot;&gt;=E2=82=B9499=
+ &lt;span&gt;=E2=82=B91,099&lt;/span&gt;&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &lt;button class=3D&quot;product-btn&quot;&gt;&lt;i class=
+=3D&quot;fa-solid fa-eye&quot;&gt;&lt;/i&gt; View Product&lt;/button&gt;<br=
+>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;/div&=
+gt;<br><br>=C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 &lt;/section&gt;<br><br>=C2=
+=A0 &lt;!-- =3D=3D=3D=3D=3D SHOP SECTION =3D=3D=3D=3D=3D --&gt;<br>=C2=A0 &=
+lt;section id=3D&quot;shop&quot;&gt;<br>=C2=A0 =C2=A0 &lt;div class=3D&quot=
+;shop-intro&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;section=
+-label&quot;&gt;&lt;i class=3D&quot;fa-solid fa-store&quot;&gt;&lt;/i&gt; O=
+ur Store&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;h2 class=3D&quot;section-t=
+itle&quot;&gt;Visit Our &lt;span&gt;Shop&lt;/span&gt;&lt;/h2&gt;<br>=C2=A0 =
+=C2=A0 =C2=A0 &lt;p class=3D&quot;about-text&quot; style=3D&quot;margin-top=
+:14px;&quot;&gt;Step inside THE 499 STORE and experience fashion firsthand.=
+ Our stores are designed to give you a comfortable, exciting and easy shopp=
+ing experience.&lt;/p&gt;<br>=C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=
+=A0 &lt;div class=3D&quot;shop-gallery&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 &l=
+t;div class=3D&quot;gallery-item large&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &lt;i class=3D&quot;fa-solid fa-store&quot;&gt;&lt;/i&gt;<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &lt;span&gt;Main Shop Photo =E2=80=94 Add Here&lt;/spa=
+n&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;gallery-overlay&=
+quot;&gt;&lt;span&gt;&lt;i class=3D&quot;fa-solid fa-location-dot&quot;&gt;=
+&lt;/i&gt; Main Branch&lt;/span&gt;&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt=
+;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;gallery-item&quot;&=
+gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;i class=3D&quot;fa-solid fa-door-ope=
+n&quot;&gt;&lt;/i&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;span&gt;Shop Inter=
+ior&lt;/span&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;galle=
+ry-overlay&quot;&gt;&lt;span&gt;&lt;i class=3D&quot;fa-solid fa-couch&quot;=
+&gt;&lt;/i&gt; Interior View&lt;/span&gt;&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=
+=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;gallery-item=
+&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;i class=3D&quot;fa-solid fa-s=
+hirt&quot;&gt;&lt;/i&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;span&gt;Clothin=
+g Section&lt;/span&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot=
+;gallery-overlay&quot;&gt;&lt;span&gt;&lt;i class=3D&quot;fa-solid fa-shirt=
+&quot;&gt;&lt;/i&gt; Clothing&lt;/span&gt;&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=
+=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;gallery-item=
+&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;i class=3D&quot;fa-solid fa-s=
+hoe-prints&quot;&gt;&lt;/i&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;span&gt;S=
+hoes Section&lt;/span&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&q=
+uot;gallery-overlay&quot;&gt;&lt;span&gt;&lt;i class=3D&quot;fa-solid fa-sh=
+oe-prints&quot;&gt;&lt;/i&gt; Footwear&lt;/span&gt;&lt;/div&gt;<br>=C2=A0 =
+=C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;ga=
+llery-item&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;i class=3D&quot;fa-=
+solid fa-clock&quot;&gt;&lt;/i&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;span&=
+gt;Watches Display&lt;/span&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div clas=
+s=3D&quot;gallery-overlay&quot;&gt;&lt;span&gt;&lt;i class=3D&quot;fa-solid=
+ fa-clock&quot;&gt;&lt;/i&gt; Watches&lt;/span&gt;&lt;/div&gt;<br>=C2=A0 =
+=C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 &lt;/sec=
+tion&gt;<br><br>=C2=A0 &lt;!-- =3D=3D=3D=3D=3D CONTACT SECTION =3D=3D=3D=3D=
+=3D --&gt;<br>=C2=A0 &lt;section id=3D&quot;contact&quot;&gt;<br>=C2=A0 =C2=
+=A0 &lt;div class=3D&quot;section-label&quot;&gt;&lt;i class=3D&quot;fa-sol=
+id fa-phone&quot;&gt;&lt;/i&gt; Get In Touch&lt;/div&gt;<br>=C2=A0 =C2=A0 &=
+lt;h2 class=3D&quot;section-title&quot;&gt;Contact &lt;span&gt;Us&lt;/span&=
+gt;&lt;/h2&gt;<br><br>=C2=A0 =C2=A0 &lt;div class=3D&quot;contact-grid&quot=
+;&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &l=
+t;div class=3D&quot;contact-item&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &lt;div class=3D&quot;contact-icon&quot;&gt;&lt;i class=3D&quot;fa-s=
+olid fa-map-location-dot&quot;&gt;&lt;/i&gt;&lt;/div&gt;<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;contact-detail&quot;&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;h4&gt;Our Location&lt;/h4&gt;<br=
+>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;p&gt;Main Branch Address Her=
+e, City, State =E2=80=94 PIN&lt;/p&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;contact-item&quot;&gt;<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;contact-icon&quot;&gt;&lt=
+;i class=3D&quot;fa-solid fa-phone&quot;&gt;&lt;/i&gt;&lt;/div&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;contact-detail&quot;&=
+gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;h4&gt;Phone Number&lt;=
+/h4&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;a href=3D&quot;tel=
+:+910000000000&quot;&gt;+91 00000 00000&lt;/a&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;contact-item&quot;&gt;<br=
+>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;contact-icon&quot=
+;&gt;&lt;i class=3D&quot;fa-brands fa-whatsapp&quot;&gt;&lt;/i&gt;&lt;/div&=
+gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;contact-det=
+ail&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;h4&gt;WhatsA=
+pp&lt;/h4&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;a href=3D&qu=
+ot;<a href=3D"https://wa.me/910000000000">https://wa.me/910000000000</a>&qu=
+ot; target=3D&quot;_blank&quot;&gt;Chat with us on WhatsApp&lt;/a&gt;<br>=
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;conta=
+ct-item&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&qu=
+ot;contact-icon&quot;&gt;&lt;i class=3D&quot;fa-solid fa-envelope&quot;&gt;=
+&lt;/i&gt;&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=
+=3D&quot;contact-detail&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &lt;h4&gt;Email&lt;/h4&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ &lt;a href=3D&quot;mailto:<a href=3D"mailto:info@the499store.com">info@the=
+499store.com</a>&quot;&gt;<a href=3D"mailto:info@the499store.com">info@the4=
+99store.com</a>&lt;/a&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt=
+;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &lt;div class=3D&quot;contact-item&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &lt;div class=3D&quot;contact-icon&quot;&gt;&lt;i class=3D&qu=
+ot;fa-solid fa-clock&quot;&gt;&lt;/i&gt;&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;contact-detail&quot;&gt;<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;h4&gt;Store Hours&lt;/h4&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;p&gt;Mon =E2=80=93 Sat: 10:00 AM=
+ =E2=80=93 9:00 PM&lt;/p&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &=
+lt;p&gt;Sunday: 11:00 AM =E2=80=93 7:00 PM&lt;/p&gt;<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<=
+br>=C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 &lt;div cl=
+ass=3D&quot;contact-form&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;h3 st=
+yle=3D&quot;font-family:&#39;Rajdhani&#39;,sans-serif;font-size:20px;font-w=
+eight:700;color:var(--white);margin-bottom:8px;&quot;&gt;<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &lt;i class=3D&quot;fa-solid fa-message&quot; style=3D=
+&quot;color:var(--yellow);margin-right:8px;&quot;&gt;&lt;/i&gt;Send Us a Me=
+ssage<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/h3&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &lt;div class=3D&quot;form-group&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &lt;label&gt;Your Name&lt;/label&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 &lt;input type=3D&quot;text&quot; placeholder=3D&quot;Enter y=
+our name&quot; /&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;form-group&quot;&gt;<br>=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;label&gt;Phone / Email&lt;/label&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;input type=3D&quot;text&quot; placehold=
+er=3D&quot;Enter phone or email&quot; /&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+&lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;form-grou=
+p&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;label&gt;Message&lt;/=
+label&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;textarea placeholder=3D=
+&quot;Write your message here...&quot;&gt;&lt;/textarea&gt;<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;button cl=
+ass=3D&quot;form-submit&quot;&gt;&lt;i class=3D&quot;fa-solid fa-paper-plan=
+e&quot;&gt;&lt;/i&gt; Send Message&lt;/button&gt;<br>=C2=A0 =C2=A0 =C2=A0 &=
+lt;/div&gt;<br>=C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 &lt;/section&gt;<br><br=
+>=C2=A0 &lt;!-- =3D=3D=3D=3D=3D FOOTER =3D=3D=3D=3D=3D --&gt;<br>=C2=A0 &lt=
+;footer&gt;<br>=C2=A0 =C2=A0 &lt;!-- Wave SVG --&gt;<br>=C2=A0 =C2=A0 &lt;d=
+iv class=3D&quot;footer-wave&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;svg view=
+Box=3D&quot;0 0 1440 80&quot; fill=3D&quot;none&quot; xmlns=3D&quot;<a href=
+=3D"http://www.w3.org/2000/svg">http://www.w3.org/2000/svg</a>&quot; preser=
+veAspectRatio=3D&quot;none&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;pat=
+h d=3D&quot;M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1380,=
+20 1440,40 L1440,80 L0,80 Z&quot; fill=3D&quot;#1A1A1A&quot;/&gt;<br>=C2=A0=
+ =C2=A0 =C2=A0 &lt;/svg&gt;<br>=C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=
+=A0 &lt;div class=3D&quot;footer-body&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt=
+;div class=3D&quot;footer-grid&quot;&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ &lt;div class=3D&quot;footer-brand&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &lt;span class=3D&quot;brand-name&quot;&gt;THE 499 STORE&lt;/spa=
+n&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;p&gt;Fashion that fits your=
+ budget. Clothes, shoes &amp; watches =E2=80=94 all starting at just =E2=82=
+=B9499. Quality style for everyone, everywhere.&lt;/p&gt;<br>=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;footer-socials&quot;&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;a href=3D&quot;#&quot; class=3D&=
+quot;social-link&quot;&gt;&lt;i class=3D&quot;fa-brands fa-instagram&quot;&=
+gt;&lt;/i&gt;&lt;/a&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;a =
+href=3D&quot;#&quot; class=3D&quot;social-link&quot;&gt;&lt;i class=3D&quot=
+;fa-brands fa-facebook&quot;&gt;&lt;/i&gt;&lt;/a&gt;<br>=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 &lt;a href=3D&quot;#&quot; class=3D&quot;social-li=
+nk&quot;&gt;&lt;i class=3D&quot;fa-brands fa-whatsapp&quot;&gt;&lt;/i&gt;&l=
+t;/a&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;a href=3D&quot;#&=
+quot; class=3D&quot;social-link&quot;&gt;&lt;i class=3D&quot;fa-brands fa-y=
+outube&quot;&gt;&lt;/i&gt;&lt;/a&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &lt;a href=3D&quot;#&quot; class=3D&quot;social-link&quot;&gt;&lt;i =
+class=3D&quot;fa-brands fa-x-twitter&quot;&gt;&lt;/i&gt;&lt;/a&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ &lt;/div&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;foot=
+er-col&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;h5&gt;&lt;i clas=
+s=3D&quot;fa-solid fa-link&quot; style=3D&quot;margin-right:6px;color:var(-=
+-yellow);&quot;&gt;&lt;/i&gt;Quick Links&lt;/h5&gt;<br>=C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 &lt;ul class=3D&quot;footer-links&quot;&gt;<br>=C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a href=3D&quot;#home&quot;&gt;&l=
+t;i class=3D&quot;fa-solid fa-chevron-right&quot;&gt;&lt;/i&gt;Home&lt;/a&g=
+t;&lt;/li&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a =
+href=3D&quot;#about&quot;&gt;&lt;i class=3D&quot;fa-solid fa-chevron-right&=
+quot;&gt;&lt;/i&gt;About Us&lt;/a&gt;&lt;/li&gt;<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a href=3D&quot;#products&quot;&gt;&lt;i =
+class=3D&quot;fa-solid fa-chevron-right&quot;&gt;&lt;/i&gt;Products&lt;/a&g=
+t;&lt;/li&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a =
+href=3D&quot;#shop&quot;&gt;&lt;i class=3D&quot;fa-solid fa-chevron-right&q=
+uot;&gt;&lt;/i&gt;Our Shop&lt;/a&gt;&lt;/li&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a href=3D&quot;#contact&quot;&gt;&lt;i clas=
+s=3D&quot;fa-solid fa-chevron-right&quot;&gt;&lt;/i&gt;Contact&lt;/a&gt;&lt=
+;/li&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/ul&gt;<br>=C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;div clas=
+s=3D&quot;footer-col&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;h5=
+&gt;&lt;i class=3D&quot;fa-solid fa-bag-shopping&quot; style=3D&quot;margin=
+-right:6px;color:var(--yellow);&quot;&gt;&lt;/i&gt;Categories&lt;/h5&gt;<br=
+>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;ul class=3D&quot;footer-links&quot;=
+&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a href=3D&q=
+uot;#products&quot;&gt;&lt;i class=3D&quot;fa-solid fa-shirt&quot;&gt;&lt;/=
+i&gt;Clothing&lt;/a&gt;&lt;/li&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &lt;li&gt;&lt;a href=3D&quot;#products&quot;&gt;&lt;i class=3D&quot;=
+fa-solid fa-shoe-prints&quot;&gt;&lt;/i&gt;Footwear&lt;/a&gt;&lt;/li&gt;<br=
+>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a href=3D&quot;#pr=
+oducts&quot;&gt;&lt;i class=3D&quot;fa-solid fa-clock&quot;&gt;&lt;/i&gt;Wa=
+tches&lt;/a&gt;&lt;/li&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt=
+;li&gt;&lt;a href=3D&quot;#products&quot;&gt;&lt;i class=3D&quot;fa-solid f=
+a-fire&quot;&gt;&lt;/i&gt;New Arrivals&lt;/a&gt;&lt;/li&gt;<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a href=3D&quot;#products&quot=
+;&gt;&lt;i class=3D&quot;fa-solid fa-tag&quot;&gt;&lt;/i&gt;Sale Items&lt;/=
+a&gt;&lt;/li&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/ul&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &l=
+t;div class=3D&quot;footer-col&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 &lt;h5&gt;&lt;i class=3D&quot;fa-solid fa-location-dot&quot; style=3D&q=
+uot;margin-right:6px;color:var(--yellow);&quot;&gt;&lt;/i&gt;Find Us&lt;/h5=
+&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;ul class=3D&quot;footer-link=
+s&quot;&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a hr=
+ef=3D&quot;#shop&quot;&gt;&lt;i class=3D&quot;fa-solid fa-store&quot;&gt;&l=
+t;/i&gt;Main Branch&lt;/a&gt;&lt;/li&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 &lt;li&gt;&lt;a href=3D&quot;#shop&quot;&gt;&lt;i class=3D&quot;=
+fa-solid fa-store&quot;&gt;&lt;/i&gt;City Centre Branch&lt;/a&gt;&lt;/li&gt=
+;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a href=3D&quot=
+;#shop&quot;&gt;&lt;i class=3D&quot;fa-solid fa-store&quot;&gt;&lt;/i&gt;Ma=
+rket Hub Branch&lt;/a&gt;&lt;/li&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 &lt;li&gt;&lt;a href=3D&quot;#contact&quot;&gt;&lt;i class=3D&quot;f=
+a-solid fa-phone&quot;&gt;&lt;/i&gt;+91 00000 00000&lt;/a&gt;&lt;/li&gt;<br=
+>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;li&gt;&lt;a href=3D&quot;mai=
+lto:<a href=3D"mailto:info@the499store.com">info@the499store.com</a>&quot;&=
+gt;&lt;i class=3D&quot;fa-solid fa-envelope&quot;&gt;&lt;/i&gt;Email Us&lt;=
+/a&gt;&lt;/li&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/ul&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br><br>=C2=A0 =C2=A0 =C2=A0 &lt;/div&=
+gt;<br><br>=C2=A0 =C2=A0 =C2=A0 &lt;div class=3D&quot;footer-bottom&quot;&g=
+t;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;p class=3D&quot;footer-copy&quot;&gt;=
+&amp;copy; 2025 &lt;span&gt;THE 499 STORE&lt;/span&gt;. All Rights Reserved=
+. Made with &lt;i class=3D&quot;fa-solid fa-heart&quot; style=3D&quot;color=
+:var(--yellow);&quot;&gt;&lt;/i&gt; for Fashion.&lt;/p&gt;<br>=C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 &lt;div class=3D&quot;footer-bottom-links&quot;&gt;<br>=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;a href=3D&quot;#&quot;&gt;Privacy Polic=
+y&lt;/a&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;a href=3D&quot;#&quot=
+;&gt;Terms of Use&lt;/a&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;a hre=
+f=3D&quot;#&quot;&gt;Sitemap&lt;/a&gt;<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/=
+div&gt;<br>=C2=A0 =C2=A0 =C2=A0 &lt;/div&gt;<br>=C2=A0 =C2=A0 &lt;/div&gt;<=
+br>=C2=A0 &lt;/footer&gt;<br><br>=C2=A0 &lt;!-- =3D=3D=3D=3D=3D FILTER JS =
+=3D=3D=3D=3D=3D --&gt;<br>=C2=A0 &lt;script&gt;<br>=C2=A0 =C2=A0 const filt=
+erBtns =3D document.querySelectorAll(&#39;.filter-btn&#39;);<br>=C2=A0 =C2=
+=A0 filterBtns.forEach(btn =3D&gt; {<br>=C2=A0 =C2=A0 =C2=A0 btn.addEventLi=
+stener(&#39;click&#39;, () =3D&gt; {<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 filterB=
+tns.forEach(b =3D&gt; b.classList.remove(&#39;active&#39;));<br>=C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 btn.classList.add(&#39;active&#39;);<br>=C2=A0 =C2=A0 =C2=
+=A0 });<br>=C2=A0 =C2=A0 });<br>=C2=A0 &lt;/script&gt;<br><br>&lt;/body&gt;=
+<br>&lt;/html&gt;</div>

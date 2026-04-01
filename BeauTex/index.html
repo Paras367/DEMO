@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>✨ Beautex Beauty Lounge | Premium Beauty Parlor</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  
+  <style>
+    :root {
+      --primary: #6B2737;    
+      --secondary: #E8B4B8;    
+      --accent: #FFF9F6;   
+      --dark: #2C1810;         
+      --light: #FFFFFF;    
+      --shadow: 0 8px 30px rgba(107, 39, 55, 0.15);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--accent);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    ul { list-style: none; }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    .section { padding: 80px 0; }
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+    }
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      display: inline-block;
+      padding-bottom: 15px;
+    }
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--secondary);
+      border-radius: 2px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--primary);
+      color: var(--light);
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 2px solid var(--primary);
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+    .btn:hover {
+      background: transparent;
+      color: var(--primary);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(107, 39, 55, 0.25);
+    }
+    .btn-secondary {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: var(--dark);
+    }
+    .btn-secondary:hover {
+      background: transparent;
+      color: var(--secondary);
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      border-color: #25D366;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-whatsapp:hover {
+      background: transparent;
+      color: #25D366;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 249, 246, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+      padding: 15px 0;
+      transition: var(--transition);
+    }
+    header.scrolled {
+      padding: 10px 0;
+      background: rgba(255, 249, 246, 0.98);
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .logo svg {
+      width: 40px;
+      height: 40px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    .nav-links a {
+      font-weight: 500;
+      position: relative;
+      padding: 5px 0;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: var(--transition);
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(232, 180, 184, 0.15) 0%, rgba(107, 39, 55, 0.08) 100%);
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
+      opacity: 0.15;
+      z-index: 0;
+    }
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-text h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: var(--dark);
+      opacity: 0.9;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hair-illustration {
+      width: 100%;
+      max-width: 450px;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about {
+      background: var(--light);
+    }
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .about-image {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .about-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      opacity: 0.1;
+      z-index: 1;
+    }
+    .about-text h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .about-text p {
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--secondary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    /* ===== SERVICES SECTION ===== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .service-card {
+      background: var(--light);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(107, 39, 55, 0.2);
+    }
+    .service-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      font-size: 1.8rem;
+    }
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+    .service-card p {
+      opacity: 0.85;
+      margin-bottom: 15px;
+    }
+    .service-price {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+
+    /* ===== HAIR GALLERY (SVG DESIGNS) ===== */
+    .gallery {
+      background: linear-gradient(135deg, var(--accent) 0%, rgba(232, 180, 184, 0.3) 100%);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .hair-card {
+      background: var(--light);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+      padding: 25px 20px;
+    }
+    .hair-card:hover {
+      transform: scale(1.03);
+    }
+    .hair-svg-container {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .hair-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    .hair-card p {
+      opacity: 0.85;
+      font-size: 0.95rem;
+    }
+
+    /* ===== INSTAGRAM SECTION ===== */
+    .instagram {
+      background: var(--light);
+      text-align: center;
+    }
+    .insta-header {
+      margin-bottom: 40px;
+    }
+    .insta-profile {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      background: var(--accent);
+      padding: 15px 30px;
+      border-radius: 50px;
+      margin-bottom: 25px;
+      box-shadow: var(--shadow);
+    }
+    .insta-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    .insta-info h4 {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 3px;
+    }
+    .insta-info p {
+      color: var(--secondary);
+      font-weight: 500;
+    }
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .insta-item {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      background: linear-gradient(45deg, var(--secondary), var(--primary));
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .insta-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(107, 39, 55, 0.2);
+    }
+    .insta-item::after {
+      content: '\f16d';
+      font-family: 'Font Awesome 6 Brands';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      font-size: 2rem;
+      color: white;
+      opacity: 0.9;
+      transition: var(--transition);
+    }
+    .insta-item:hover::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .insta-cta {
+      margin-top: 30px;
+    }
+    .insta-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #E1306C, #C13584, #833AB4);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 5px 20px rgba(131, 58, 180, 0.3);
+    }
+    .insta-cta a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(131, 58, 180, 0.45);
+    }
+
+    /* ===== CONTACT & CTA ===== */
+    .contact {
+      background: linear-gradient(135deg, var(--primary) 0%, #4a1a26 100%);
+      color: var(--light);
+      text-align: center;
+    }
+    .contact .section-title h2 {
+      color: var(--light);
+    }
+    .contact .section-title h2::after {
+      background: var(--secondary);
+    }
+    .contact-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .contact p {
+      font-size: 1.2rem;
+      margin-bottom: 35px;
+      opacity: 0.95;
+    }
+    .contact-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+    }
+    .info-item i {
+      color: var(--secondary);
+      font-size: 1.3rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.85);
+      padding: 40px 0 20px;
+      text-align: center;
+    }
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .social-links {
+      display: flex;
+      gap: 20px;
+      margin: 15px 0;
+    }
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    .social-links a:hover {
+      background: var(--secondary);
+      color: var(--primary);
+      transform: translateY(-5px);
+    }
+    .copyright {
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+
+    /* ===== FLOATING WHATSAPP BUTTON ===== */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 65px;
+      height: 65px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 5px 25px rgba(37, 211, 102, 0.45);
+      z-index: 999;
+      animation: pulse 2s infinite;
+      transition: var(--transition);
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 8px 35px rgba(37, 211, 102, 0.65);
+    }
+    .whatsapp-float span {
+      position: absolute;
+      right: 75px;
+      background: var(--dark);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(20px);
+      transition: var(--transition);
+      pointer-events: none;
+    }
+    .whatsapp-float:hover span {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.2s; }
+    .delay-2 { animation-delay: 0.4s; }
+    .delay-3 { animation-delay: 0.6s; }
+
+    
+    @media (max-width: 992px) {
+      .hero-content,
+      .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+      .hero-buttons,
+      .hero-stats {
+        justify-content: center;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--accent);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        transition: var(--transition);
+        z-index: 999;
+      }
+      .nav-links.active {
+        left: 0;
+      }
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+      .hero-text h1 {
+        font-size: 2.3rem;
+      }
+      .section {
+        padding: 60px 0;
+      }
+      .section-title h2 {
+        font-size: 2rem;
+      }
+      .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        font-size: 1.7rem;
+      }
+      .whatsapp-float span {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+      .insta-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .contact-info {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header id="header">
+    <div class="container navbar">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="45" r="30" fill="var(--secondary)" stroke="var(--primary)" stroke-width="3"/>
+          <path d="M50 75 Q70 65 70 45 Q70 25 50 20 Q30 25 30 45 Q30 65 50 75Z" fill="var(--primary)" opacity="0.2"/>
+          <circle cx="40" cy="40" r="4" fill="var(--dark)"/>
+          <circle cx="60" cy="40" r="4" fill="var(--dark)"/>
+          <path d="M42 52 Q50 58 58 52" stroke="var(--dark)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+       Beautex Beauty
+      </a>
+      
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Hair Designs</a></li>
+          <li><a href="#instagram">Instagram</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <div class="hero-text animate">
+        <h1>Where Beauty Meets Elegance ✨</h1>
+        <p>Experience premium hair styling, skincare, and beauty treatments in a luxurious, relaxing environment. Your glow-up starts here.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn">Book Appointment</a>
+          <a href="https://wa.me/910123456789" class="btn btn-whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i> Order on WhatsApp
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">5K+</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">8+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Satisfaction</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual animate delay-1">
+        
+        <svg class="hair-illustration" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="200" cy="180" rx="70" ry="85" fill="#FFD8C9" stroke="#E8B4B8" stroke-width="2"/>
+          <path d="M130 180 Q100 220 110 280 Q120 340 150 390 Q180 430 200 450 Q220 430 250 390 Q280 340 290 280 Q300 220 270 180" 
+                fill="url(#hairGradient)" stroke="#6B2737" stroke-width="2"/>
+          
+
+          <path d="M145 190 Q130 240 140 300 Q150 350 170 390" stroke="#E8B4B8" stroke-width="3" fill="none" opacity="0.7" stroke-linecap="round"/>
+          <path d="M255 190 Q270 240 260 300 Q250 350 230 390" stroke="#E8B4B8" stroke-width="3" fill="none" opacity="0.7" stroke-linecap="round"/>
+          <path d="M160 185 Q145 250 160 320 Q175 380 190 420" stroke="#FFF9F6" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
+          <path d="M240 185 Q255 250 240 320 Q225 380 210 420" stroke="#FFF9F6" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
+
+          <circle cx="140" cy="220" r="4" fill="#E8B4B8" opacity="0.8">
+            <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="260" cy="220" r="4" fill="#E8B4B8" opacity="0.8">
+            <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+          </circle>
+
+          <ellipse cx="175" cy="170" rx="12" ry="15" fill="white" stroke="#6B2737" stroke-width="1.5"/>
+          <ellipse cx="225" cy="170" rx="12" ry="15" fill="white" stroke="#6B2737" stroke-width="1.5"/>
+          <circle cx="178" cy="172" r="6" fill="#6B2737"/>
+          <circle cx="228" cy="172" r="6" fill="#6B2737"/>
+          <circle cx="180" cy="170" r="2" fill="white"/>
+          <circle cx="230" cy="170" r="2" fill="white"/>
+
+          <path d="M165 155 Q175 150 185 155" stroke="#6B2737" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M215 155 Q225 150 235 155" stroke="#6B2737" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+          <path d="M185 200 Q200 215 215 200" stroke="#6B2737" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+          <ellipse cx="160" cy="195" rx="15" ry="8" fill="#E8B4B8" opacity="0.4"/>
+          <ellipse cx="240" cy="195" rx="15" ry="8" fill="#E8B4B8" opacity="0.4"/>
+
+          <defs>
+            <linearGradient id="hairGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#6B2737;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#8B3A4A;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#4A1A26;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Story</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-image reveal">
+          <svg viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="360" height="260" rx="20" fill="#FFF9F6" stroke="#E8B4B8" stroke-width="3"/>
+            <circle cx="200" cy="120" r="60" fill="#FFD8C9" stroke="#6B2737" stroke-width="2"/>
+            <path d="M140 120 Q120 160 130 210 Q140 250 200 270 Q260 250 270 210 Q280 160 260 120" fill="url(#aboutHair)" stroke="#6B2737" stroke-width="2"/>
+            <defs>
+              <linearGradient id="aboutHair" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#6B2737"/>
+                <stop offset="100%" style="stop-color:#4A1A26"/>
+              </linearGradient>
+            </defs>
+            <text x="200" y="290" text-anchor="middle" font-family="Poppins" font-size="14" fill="#6B2737">Luxury Beauty Studio</text>
+          </svg>
+        </div>
+        <div class="about-text reveal delay-1">
+          <h3>Transforming Beauty Since 2018</h3>
+          <p>Welcome to <strong>Beautex</strong> Beauty Lounge</strong>, where every visit is a journey to your most confident self. Founded by award-winning stylist Priya Sharma, we blend traditional techniques with modern trends to create looks that are uniquely you.</p>
+          <p>Our salon is more than just a place for beauty treatments – it's a sanctuary where you can relax, rejuvenate, and rediscover your radiance.</p>
+          
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-spa"></i>
+              </div>
+              <div>
+                <strong>Premium Products</strong>
+                <p>Only the finest organic & luxury brands</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-crown"></i>
+              </div>
+              <div>
+                <strong>Expert Stylists</strong>
+                <p>Certified professionals with 5+ years experience</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-heart"></i>
+              </div>
+              <div>
+                <strong>Personalized Care</strong>
+                <p>Tailored treatments for your unique needs</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <div>
+                <strong>Eco-Friendly</strong>
+                <p>Sustainable practices & cruelty-free products</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES SECTION ===== -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <i class="fas fa-cut"></i>
+          </div>
+          <h3>Hair Styling</h3>
+          <p>Precision cuts, blowouts, and custom styles for every occasion</p>
+          <div class="service-price">From ₹799</div>
+        </div>
+        <div class="service-card reveal delay-1">
+          <div class="service-icon">
+            <i class="fas fa-paint-brush"></i>
+          </div>
+          <h3>Hair Coloring</h3>
+          <p>Balayage, highlights, ombre & vibrant fashion colors</p>
+          <div class="service-price">From ₹1,499</div>
+        </div>
+        <div class="service-card reveal delay-2">
+          <div class="service-icon">
+            <i class="fas fa-spa"></i>
+          </div>
+          <h3>Spa Treatments</h3>
+          <p>Rejuvenating facials, hair spa & therapeutic massages</p>
+          <div class="service-price">From ₹999</div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon">
+            <i class="fas fa-ring"></i>
+          </div>
+          <h3>Bridal Packages</h3>
+          <p>Complete pre-wedding & wedding day beauty solutions</p>
+          <div class="service-price">Custom Quotes</div>
+        </div>
+        <div class="service-card reveal delay-1">
+          <div class="service-icon">
+            <i class="fas fa-hand-sparkles"></i>
+          </div>
+          <h3>Nail Art</h3>
+          <p>Manicures, pedicures & stunning nail art designs</p>
+          <div class="service-price">From ₹499</div>
+        </div>
+        <div class="service-card reveal delay-2">
+          <div class="service-icon">
+            <i class="fas fa-magic"></i>
+          </div>
+          <h3>Makeup Artistry</h3>
+          <p>Professional makeup for events, photoshoots & more</p>
+          <div class="service-price">From ₹1,299</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section gallery" id="gallery">
+    <div class="container">
+      <div class="section-title">
+        <h2>Hair Design Gallery</h2>
+      </div>
+      <div class="gallery-grid">
+
+        <div class="hair-card reveal">
+          <div class="hair-svg-container">
+            <svg viewBox="0 0 200 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="100" cy="70" rx="40" ry="50" fill="#FFD8C9" stroke="#6B2737" stroke-width="1.5"/>
+              <path d="M60 70 Q40 100 50 140 Q60 180 100 210 Q140 180 150 140 Q160 100 140 70" fill="url(#waveGrad)" stroke="#6B2737" stroke-width="1.5"/>
+              <defs>
+                <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6B2737"/>
+                  <stop offset="100%" stop-color="#4A1A26"/>
+                </linearGradient>
+              </defs>
+              <path d="M70 75 Q60 110 75 150" stroke="#E8B4B8" stroke-width="2" fill="none" opacity="0.7" stroke-linecap="round"/>
+              <path d="M130 75 Q140 110 125 150" stroke="#E8B4B8" stroke-width="2" fill="none" opacity="0.7" stroke-linecap="round"/>
+              <circle cx="85" cy="65" r="5" fill="#6B2737"/>
+              <circle cx="115" cy="65" r="5" fill="#6B2737"/>
+              <path d="M90 85 Q100 92 110 85" stroke="#6B2737" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Soft Beach Waves</h3>
+          <p>Effortless, romantic waves perfect for any occasion</p>
+        </div>
+        
+
+        <div class="hair-card reveal delay-1">
+          <div class="hair-svg-container">
+            <svg viewBox="0 0 200 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="100" cy="70" rx="40" ry="50" fill="#FFD8C9" stroke="#6B2737" stroke-width="1.5"/>
+              <path d="M60 70 L60 150 Q60 180 100 190 Q140 180 140 150 L140 70" fill="url(#bobGrad)" stroke="#6B2737" stroke-width="1.5"/>
+              <defs>
+                <linearGradient id="bobGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#6B2737"/>
+                  <stop offset="100%" stop-color="#2C1810"/>
+                </linearGradient>
+              </defs>
+              <line x1="75" y1="90" x2="75" y2="170" stroke="#E8B4B8" stroke-width="1.5" opacity="0.6"/>
+              <line x1="125" y1="90" x2="125" y2="170" stroke="#E8B4B8" stroke-width="1.5" opacity="0.6"/>
+              <circle cx="85" cy="65" r="5" fill="#6B2737"/>
+              <circle cx="115" cy="65" r="5" fill="#6B2737"/>
+              <path d="M90 85 Q100 92 110 85" stroke="#6B2737" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Chic Sleek Bob</h3>
+          <p>Modern, sharp, and effortlessly sophisticated</p>
+        </div>
+        
+
+        <div class="hair-card reveal delay-2">
+          <div class="hair-svg-container">
+            <svg viewBox="0 0 200 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="100" cy="70" rx="40" ry="50" fill="#FFD8C9" stroke="#6B2737" stroke-width="1.5"/>
+              <path d="M60 70 Q50 90 55 120 Q60 150 80 170 L100 190 L120 170 Q140 150 145 120 Q150 90 140 70" fill="url(#braidGrad)" stroke="#6B2737" stroke-width="1.5"/>
+              <defs>
+                <linearGradient id="braidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#8B3A4A"/>
+                  <stop offset="100%" stop-color="#6B2737"/>
+                </linearGradient>
+              </defs>
+
+              <path d="M85 100 Q90 110 85 120 Q90 130 85 140 Q90 150 85 160" stroke="#E8B4B8" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M115 100 Q110 110 115 120 Q110 130 115 140 Q110 150 115 160" stroke="#E8B4B8" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <circle cx="100" cy="180" r="8" fill="#E8B4B8" stroke="#6B2737" stroke-width="1"/>
+              <circle cx="85" cy="65" r="5" fill="#6B2737"/>
+              <circle cx="115" cy="65" r="5" fill="#6B2737"/>
+              <path d="M90 85 Q100 92 110 85" stroke="#6B2737" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Elegant Braided Updo</h3>
+          <p>Perfect for weddings, parties & special celebrations</p>
+        </div>
+
+        <div class="hair-card reveal">
+          <div class="hair-svg-container">
+            <svg viewBox="0 0 200 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="100" cy="70" rx="40" ry="50" fill="#FFD8C9" stroke="#6B2737" stroke-width="1.5"/>
+              <path d="M60 70 Q45 90 55 120 Q45 150 70 180 Q85 200 100 210 Q115 200 130 180 Q155 150 145 120 Q155 90 140 70" fill="url(#curlGrad)" stroke="#6B2737" stroke-width="1.5"/>
+              <defs>
+                <radialGradient id="curlGrad" cx="50%" cy="50%" r="70%">
+                  <stop offset="0%" stop-color="#8B3A4A"/>
+                  <stop offset="100%" stop-color="#4A1A26"/>
+                </radialGradient>
+              </defs>
+
+              <path d="M70 100 Q65 115 75 125 Q65 140 80 150" stroke="#E8B4B8" stroke-width="2" fill="none" opacity="0.8" stroke-linecap="round"/>
+              <path d="M130 100 Q135 115 125 125 Q135 140 120 150" stroke="#E8B4B8" stroke-width="2" fill="none" opacity="0.8" stroke-linecap="round"/>
+              <circle cx="75" cy="170" r="6" fill="none" stroke="#E8B4B8" stroke-width="2"/>
+              <circle cx="125" cy="170" r="6" fill="none" stroke="#E8B4B8" stroke-width="2"/>
+              <circle cx="85" cy="65" r="5" fill="#6B2737"/>
+              <circle cx="115" cy="65" r="5" fill="#6B2737"/>
+              <path d="M90 85 Q100 92 110 85" stroke="#6B2737" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Voluminous Curls</h3>
+          <p>Bouncy, defined curls that turn heads everywhere</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section instagram" id="instagram">
+    <div class="container">
+      <div class="section-title">
+        <h2>Follow Our Journey</h2>
+      </div>
+      
+      <div class="insta-header">
+        <div class="insta-profile">
+          <div class="insta-avatar">BT</div>
+          <div class="insta-info">
+            <h4>@beautex001</h4>
+            <p><i class="fab fa-instagram"></i> 12.5K Followers</p>
+          </div>
+        </div>
+        <p style="max-width: 600px; margin: 0 auto; opacity: 0.9;">
+          Get inspired by our latest transformations, behind-the-scenes moments, and exclusive offers. Tag us in your glow-up photos!
+        </p>
+      </div>
+      
+      <div class="insta-grid">
+        <div class="insta-item" style="background: linear-gradient(45deg, #E8B4B8, #D4A5A9);"></div>
+        <div class="insta-item" style="background: linear-gradient(45deg, #6B2737, #8B3A4A);"></div>
+        <div class="insta-item" style="background: linear-gradient(45deg, #FFF9F6, #FFEEDD);"></div>
+        <div class="insta-item" style="background: linear-gradient(45deg, #A85565, #6B2737);"></div>
+        <div class="insta-item" style="background: linear-gradient(45deg, #E8B4B8, #FFF9F6);"></div>
+        <div class="insta-item" style="background: linear-gradient(45deg, #4A1A26, #6B2737);"></div>
+        <div class="insta-item" style="background: linear-gradient(45deg, #D4A5A9, #E8B4B8);"></div>
+        <div class="insta-item" style="background: linear-gradient(45deg, #8B3A4A, #A85565);"></div>
+        <div class="insta-item" style="background: linear-gradient(45deg, #FFEEDD, #FFF9F6);"></div>
+      </div>
+      
+      <div class="insta-cta">
+        <a href="https://instagram.com/adivasbeautylaunge" target="_blank">
+          <i class="fab fa-instagram"></i> Follow @beautex001
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Ready to Glow? ✨</h2>
+      </div>
+      <div class="contact-content">
+        <p>Book your appointment today and experience the Adiva difference. Walk-ins welcome, but reservations recommended!</p>
+        
+        <div class="contact-buttons">
+          <a href="https://wa.me/919876543210?text=Hi%20Beautex%20Beauty!%20I'd%20like%20to%20book%20an%20appointment%20for%20[Service]%20on%20[Date]." class="btn btn-whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i> Book via WhatsApp
+          </a>
+          <a href="tel:+919876543210" class="btn btn-secondary">
+            <i class="fas fa-phone"></i> Call Now: +91 98765 43210
+          </a>
+        </div>
+        
+        <div class="contact-info">
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>123 Glamour Street, Fashion District, Mumbai</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-clock"></i>
+            <span>Mon-Sat: 10AM-8PM | Sun: 11AM-6PM</span>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <span>helpdesk@beautex.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="container footer-content">
+      <div class="footer-logo">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30">
+          <circle cx="50" cy="45" r="30" fill="var(--secondary)" stroke="white" stroke-width="2"/>
+          <path d="M50 75 Q70 65 70 45 Q70 25 50 20 Q30 25 30 45 Q30 65 50 75Z" fill="white" opacity="0.2"/>
+        </svg>
+       Beautex Beauty Lounge
+      </div>
+      
+      <div class="social-links">
+        <a href="https://instagram.com/beautex001" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/919876543210" target="_blank" aria-label="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#" aria-label="Pinterest">
+          <i class="fab fa-pinterest-p"></i>
+        </a>
+      </div>
+      
+      <p style="max-width: 500px; opacity: 0.9;">
+        DEMO Website for Beautex Beauty Lounge. All rights reserved. This is a demonstration project for portfolio purposes only.
+      </p>
+      
+      <div class="copyright">
+        &copy; 2026 Adiva Beauty Lounge. Crafted with <i class="fas fa-heart" style="color: var(--secondary);"></i> for beauty enthusiasts.
+      </div>
+    </div>
+  </footer>
+
+
+  <a href="https://wa.me/919876543210?text=Hi%20Beautex%20Beauty!%20I'd%20like%20to%20inquire%20about%20your%20services." 
+     class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span>Chat with us!</span>
+  </a>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    // ===== MOBILE NAVIGATION TOGGLE =====
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+    
+    // ===== HEADER SCROLL EFFECT =====
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // ===== SCROLL REVEAL ANIMATIONS =====
+    const revealElements = document.querySelectorAll('.reveal');
+    
+    const revealOnScroll = () => {
+      const windowHeight = window.innerHeight;
+      const elementVisible = 150;
+      
+      revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        if (elementTop < windowHeight - elementVisible) {
+          element.classList.add('active');
+        }
+      });
+    };
+    
+    window.addEventListener('scroll', revealOnScroll);
+    // Trigger once on load
+    revealOnScroll();
+    
+    // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // ===== ACTIVE NAV LINK ON SCROLL =====
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-links a');
+    
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if(pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if(item.getAttribute('href').slice(1) === current) {
+          item.classList.add('active');
+        }
+      });
+    });
+    
+    // ===== INSTAGRAM ITEM HOVER EFFECT ENHANCEMENT =====
+    document.querySelectorAll('.insta-item').forEach(item => {
+      item.addEventListener('mouseenter', function() {
+        this.style.zIndex = '10';
+      });
+      item.addEventListener('mouseleave', function() {
+        this.style.zIndex = '1';
+      });
+    });
+    
+
+    console.log(`%c✨ Welcome to Beautex Beauty Lounge Demo! %c\n\nThis is a DEMO website created with ❤️\nFor inquiries: hello@beautexbeauty.com\nInstagram: @Beautex001`, 
+      'font-family: Playfair Display; font-size: 18px; color: #6B2737; font-weight: bold;',
+      'font-family: Poppins; font-size: 13px; color: #2C1810;'
+    );
+    
+
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.animate').forEach((el, index) => {
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 300 + (index * 200));
+      });
+    });
+  </script>
+</body>
+</html>

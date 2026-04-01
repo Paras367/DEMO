@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAIROS | Artist Bio & Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --accent-purple: #7000FF;
+            --accent-green: #CCFF00;
+            --accent-glow: rgba(112, 0, 255, 0.5);
+            --font-display: 'Impact', sans-serif;
+            --font-body: 'Courier New', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .highlight {
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- BACKGROUND CANVAS --- */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--accent-green);
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 30px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-purple);
+            text-shadow: 0 0 10px var(--accent-purple);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 8rem;
+            text-transform: uppercase;
+            line-height: 0.9;
+            position: relative;
+            z-index: 2;
+            mix-blend-mode: exclusion;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--accent-purple);
+            margin-top: 20px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* --- BIO SECTION --- */
+        .bio-section {
+            padding: 100px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .bio-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(45deg, #222, #111);
+            border: 2px solid var(--accent-purple);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 10px 10px 0px var(--accent-green);
+        }
+
+        .bio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+            transition: 0.5s;
+        }
+
+        .bio-image:hover img {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        .bio-text h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .bio-text p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        /* --- MUSIC TASTE / VIBE --- */
+        .vibe-section {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .tag {
+            padding: 10px 25px;
+            border: 1px solid var(--text-muted);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .tag:hover {
+            background: var(--accent-purple);
+            border-color: var(--accent-purple);
+            color: white;
+            box-shadow: 0 0 20px var(--accent-purple);
+            transform: scale(1.1);
+        }
+
+        /* --- STICKY PLAYER --- */
+        .sticky-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid var(--accent-green);
+            padding: 15px;
+            border-radius: 10px;
+            z-index: 999;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.2);
+        }
+
+        .play-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-green);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-weight: bold;
+        }
+
+        .track-info h4 { font-size: 0.9rem; margin-bottom: 5px; }
+        .track-info p { font-size: 0.7rem; color: var(--text-muted); }
+
+        .visualizer {
+            display: flex;
+            gap: 3px;
+            height: 20px;
+            align-items: flex-end;
+        }
+
+        .bar {
+            width: 3px;
+            background: var(--accent-purple);
+            animation: equalize 1s infinite;
+        }
+        
+        .bar:nth-child(2) { animation-delay: 0.2s; }
+        .bar:nth-child(3) { animation-delay: 0.4s; }
+        .bar:nth-child(4) { animation-delay: 0.1s; }
+        .bar:nth-child(5) { animation-delay: 0.3s; }
+
+        @keyframes equalize {
+            0% { height: 5px; }
+            50% { height: 20px; }
+            100% { height: 5px; }
+        }
+
+        /* --- GROWTH / NEWSLETTER --- */
+        .growth-section {
+            padding: 100px 0;
+            background: linear-gradient(to right, #000, #1a0033);
+            text-align: center;
+            border-top: 1px solid var(--accent-purple);
+        }
+
+        .input-group {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        input {
+            padding: 15px;
+            background: transparent;
+            border: 1px solid var(--text-muted);
+            color: white;
+            font-family: var(--font-body);
+            width: 300px;
+        }
+
+        button.cta {
+            padding: 15px 40px;
+            background: var(--accent-green);
+            border: none;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: var(--font-display);
+            transition: 0.3s;
+        }
+
+        button.cta:hover {
+            background: white;
+            box-shadow: 0 0 20px white;
+        }
+
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 4rem; }
+            .bio-section { grid-template-columns: 1fr; }
+            .bio-image { height: 300px; }
+            .sticky-player { width: 90%; left: 5%; right: 5%; bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <nav>
+        <div class="logo">KAIROS</div>
+        <div class="nav-links">
+            <a href="#bio">Bio</a>
+            <a href="#music">Music</a>
+            <a href="#join">Join</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="glitch" data-text="KAIROS">KAIROS</h1>
+        <p>Sonic Architect // Future Bass // Darkwave</p>
+        <div class="scroll-indicator">↓ SCROLL TO ENTER</div>
+    </section>
+
+    <!-- Bio Section -->
+    <section id="bio" class="container bio-section">
+        <div class="bio-image">
+            <!-- Placeholder for Artist Image -->
+            <img src="https://images.unsplash.com/photo-1514525253440-b393452e8d26?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Artist Portrait">
+        </div>
+        <div class="bio-text">
+            <h2 class="reveal-text">THE <span class="gradient-text">ORIGIN</span></h2>
+            <p class="reveal-text">
+                Born in the digital void, <strong>KAIROS</strong> isn't just a musician; they are a curator of frequencies. Blending the melancholic melodies of 80s synth-pop with the aggressive, distorted basslines of modern industrial, KAIROS creates a soundscape that feels like a memory from a future that hasn't happened yet.
+            </p>
+            <p class="reveal-text">
+                With over 5 million streams and a cult following in Berlin and Tokyo, the mission is clear: <span class="highlight">To disrupt the silence.</span>
+            </p>
+            <p class="reveal-text">
+                "I don't make music to be background noise. I make music to be felt in your chest."
+            </p>
+        </div>
+    </section>
+
+
+    <section id="music" class="vibe-section">
+        <h2 class="reveal-text">SOUND <span style="color: var(--accent-green)">DNA</span></h2>
+        <p class="reveal-text">Explore the sonic palette</p>
+        
+        <div class="tags-container reveal-text">
+            <div class="tag">Synthwave</div>
+            <div class="tag">Dark Techno</div>
+            <div class="tag">Cyberpunk</div>
+            <div class="tag">Ambient</div>
+            <div class="tag">Glitch Hop</div>
+            <div class="tag">Retrowave</div>
+            <div class="tag">Experimental</div>
+            <div class="tag">Bass Music</div>
+        </div>
+    </section>
+
+
+    <section id="join" class="growth-section">
+        <div class="container">
+            <h2 class="reveal-text">JOIN THE <span class="gradient-text">CULT</span></h2>
+            <p class="reveal-text">Get exclusive access to unreleased tracks, early tour tickets, and secret drops.</p>
+            
+            <form class="input-group reveal-text" onsubmit="event.preventDefault(); alert('Welcome to the inner circle.');">
+                <input type="email" placeholder="ENTER YOUR EMAIL" required>
+                <button type="submit" class="cta">INITIATE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Sticky Audio Player -->
+    <div class="sticky-player">
+        <button class="play-btn" id="playBtn">▶</button>
+        <div class="track-info">
+            <h4>Neon Nights (Demo)</h4>
+            <p>KAIROS</p>
+        </div>
+        <div class="visualizer">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+
+    <script>
+     
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 1;
+                this.vy = (Math.random() - 0.5) * 1;
+                this.size = Math.random() * 2;
+                this.color = Math.random() > 0.5 ? '#7000FF' : '#CCFF00'; 
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+           
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+            
+         
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(100, 100, 100, ${1 - distance/100})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', () => { resize(); initParticles(); });
+        resize();
+        initParticles();
+        animateParticles();
+
+
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-text').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+
+      
+        const playBtn = document.getElementById('playBtn');
+        const bars = document.querySelectorAll('.bar');
+        let isPlaying = false;
+
+        playBtn.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                playBtn.textContent = '||';
+                bars.forEach(bar => bar.style.animationPlayState = 'running');
+            } else {
+                playBtn.textContent = '▶';
+                bars.forEach(bar => bar.style.animationPlayState = 'paused');
+            }
+        });
+        bars.forEach(bar => bar.style.animationPlayState = 'paused');
+
+    </script>
+</body>
+</html>
